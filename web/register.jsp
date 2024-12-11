@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : Dec 9, 2024, 9:05:36 AM
+    Document   : register
+    Created on : Dec 11, 2024, 12:03:36 PM
     Author     : Syamir
 --%>
 
@@ -9,25 +9,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
-    <form action="LoginServlet" method="post">
+    <form action="RegistrationServlet" method="post">
         <label for="username">Username:</label>
         <input type="text" name="username" required><br><br>
         <label for="password">Password:</label>
         <input type="password" name="password" required><br><br>
-        <button type="submit">Login</button>
-    </form>
-
-    <form action="register.jsp" method="get">
         <button type="submit">Register</button>
     </form>
 
-    <div>
-        <% if (request.getParameter("error") != null) { %>
-            <p style="color:red;">Invalid username or password!</p>
-        <% } %>
-    </div>
+    <form action="login.jsp" method="get">
+        <button type="submit">Back to Login</button>
+    </form>
 </body>
 </html>

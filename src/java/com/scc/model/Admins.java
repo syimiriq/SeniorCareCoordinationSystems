@@ -7,9 +7,9 @@ package com.scc.model;
 
 /**
  *
- * @author User
+ * @author Syamir
  */
-public class Caretaker {
+public class Admins {
     private String username;
     private String password;
     

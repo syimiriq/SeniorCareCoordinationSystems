@@ -7,27 +7,54 @@ package com.scc.controller;
 
 /**
  *
- * @author User
+ * @author Syamir
  */
-import com.scc.model.Caretaker;
+import com.scc.model.Admins;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
+import java.sql.*;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        // Example logic
-        Caretaker caretaker = new Caretaker();
-        caretaker.setUsername(username);
-        caretaker.setPassword(password);
+        // Verify credentials
+        try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc")) {
+            String query = "SELECT * FROM admins WHERE username = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, username);
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    String storedPassword = rs.getString("password");
 
-        // For now, simply forward to a success page
-        request.setAttribute("caretaker", caretaker);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
-        dispatcher.forward(request, response);
+                    // Verify hashed password
+                    if (BCrypt.checkpw(password, storedPassword)) {
+                        // Create session for user
+                        HttpSession session = request.getSession();
+                        session.setAttribute("username", username);
+                        response.sendRedirect("home.jsp"); // Redirect to home page after successful login
+                    } else {
+                        response.sendRedirect("login.jsp?error=invalid"); // Invalid credentials
+                    }
+                } else {
+                    response.sendRedirect("login.jsp?error=notfound"); // User not found
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+//        Admins admin = new Admins();
+//        admin.setUsername(username);
+//        admin.setPassword(password);
+//
+//        // For now, simply forward to a success page
+//        request.setAttribute("admin", admin);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
+//        dispatcher.forward(request, response);
     }
 }
