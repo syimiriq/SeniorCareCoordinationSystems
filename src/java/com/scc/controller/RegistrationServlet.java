@@ -73,19 +73,29 @@ public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        int phone = Integer.parseInt(request.getParameter("phone"));
+        String role = request.getParameter("role");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
+        boolean status = false;
+        
         // Hash the password for storage
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt()); 
 
         // Database connection and insertion
         try (PrintWriter out = response.getWriter()) {
                 Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");//maybe here
-                String query = "INSERT INTO admins (username, password) VALUES (?, ?)";
+                String query = "INSERT INTO caretakers (name,email,phone,username,password,role,status) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmt = conn.prepareStatement(query);
-                stmt.setString(1, username);
-                stmt.setString(2, hashedPassword);
+                stmt.setString(1,name);
+                stmt.setString(2,email);
+                stmt.setInt(3, phone);
+                stmt.setString(4, username);
+                stmt.setString(5, hashedPassword);
+                stmt.setString(6,role);
+                stmt.setBoolean(7,status);
                 stmt.executeUpdate();
                 conn.close();  
                 response.sendRedirect("login.jsp");

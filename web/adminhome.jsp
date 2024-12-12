@@ -4,7 +4,7 @@
     Author     : Syamir
 --%>
 
-<%@page import="com.scc.model.Caretakers"%>
+<%@page import="com.scc.model.Admins"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <!DOCTYPE html>
@@ -16,16 +16,16 @@
 </head>
 <body>
             <%
-               
-            if(session == null || session.getAttribute("Caretaker")==null) {
+            if(session == null || session.getAttribute("Admin")==null) {
                 response.sendRedirect("login.jsp");
                 return;
             }
             else{
-                       Caretakers caretaker = (Caretakers)session.getAttribute("Caretaker");
-                        %>
-
-                        <h1>Welcome, <%= caretaker.getName()%>!</h1>
+                        Admins admin = (Admins)session.getAttribute("Admin");
+                        
+            
+            %>
+    <h1>Welcome, <%= admin.getUsername()%></h1>
     <%
     }
     %>
