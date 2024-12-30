@@ -9,7 +9,7 @@ package com.scc.model;
  *
  * @author Syamir
  */
-public class Admins {
+public class Admins implements java.io.Serializable{
     private int ID;
     private String username;
     private String email;

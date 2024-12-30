@@ -9,7 +9,7 @@ package com.scc.model;
  *
  * @author Syamir
  */
-public class Caretakers {
+public class Caretakers implements java.io.Serializable {
     private int ID;
     private String name;
     private String email;
