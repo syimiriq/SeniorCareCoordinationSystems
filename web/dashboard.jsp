@@ -1,11 +1,23 @@
 <%-- 
-    Document   : addCaretaker
+    Document   : dashboard
     Created on : Jan 8, 2025, 10:05:43 AM
     Author     : Ichiro
 --%>
 
 <%@page import="java.sql.*"%>
 <%@page import="com.scc.model.Admins"%>
+<%@page import="com.scc.model.Caretakers"%>
+            <%
+            if(session == null || session.getAttribute("Admin")==null) {
+                response.sendRedirect("login.jsp");
+                return;
+            }
+            else{
+                        Admins admin = (Admins)session.getAttribute("Admin");
+                        
+            
+            %>
+            
 <%
     int caretakerCount = 0;
     int seniorCount = 0;
