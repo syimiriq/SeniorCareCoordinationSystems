@@ -16,6 +16,18 @@
         <servlet-name>AddCaretakerServlet</servlet-name>
         <servlet-class>AddCaretakerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCaretaker</servlet-name>
+        <servlet-class>com.scc.controller.AddCaretaker</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditCaretakerServlet</servlet-name>
+        <servlet-class>EditCaretakerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCaretakerServlet</servlet-name>
+        <servlet-class>com.scc.controller.DeleteCaretakerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>AddCaretakerServlet</servlet-name>
         <url-pattern>/AddCaretakerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCaretaker</servlet-name>
+        <url-pattern>/AddCaretaker</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCaretakerServlet</servlet-name>
+        <url-pattern>/EditCaretakerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCaretakerServlet</servlet-name>
+        <url-pattern>/DeleteCaretakerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

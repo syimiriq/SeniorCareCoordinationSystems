@@ -8,8 +8,13 @@
             <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/home.jsp</file>
             <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/LoginServlet.java</file>
             <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/index.html</file>
+            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/dashboard.jsp</file>
+            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/nbproject/private/private.xml</file>
             <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/LogoutServlet.java</file>
+            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/addCaretaker.jsp</file>
             <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/RegistrationServlet.java</file>
+            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/README.md</file>
+            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/AddCaretakerServlet.java</file>
         </group>
     </open-files>
 </project-private>
