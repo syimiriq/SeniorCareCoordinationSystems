@@ -1,0 +1,28 @@
+<%-- 
+    Document   : addActivities
+    Created on : Jan 12, 2025, 1:31:53 AM
+    Author     : NITRO
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Create New Activities</title>
+    </head>
+    <body>
+         <h1>Create New Activities</h1>
+        <form method ="post" action ="">
+            <label for="name">Activity Name :</label>
+            <input type="text" required>
+            <label for="name">Type :</label>
+            <input type="text" required>
+            <label for="name">Description :</label>
+            <input type="text" required>
+            <label for="name">Location :</label>
+            <input type="text" required>
+            <button type="submit">Add</button>
+        </form>
+    </body>
+</html>
