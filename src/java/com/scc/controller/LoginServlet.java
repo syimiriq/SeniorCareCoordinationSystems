@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
                         Admins admin = new Admins(ID,username,email,role);
 //                        HttpSession session = request.getSession();
                         session.setAttribute("Admin", admin);
-                        response.sendRedirect("dashboard.jsp"); // Redirect to home page after successful login
+                        response.sendRedirect("adminhome.jsp"); // Redirect to home page after successful login
                     } else {
                         response.sendRedirect("login.jsp?error=invalid"); // Invalid credentials
                     }
