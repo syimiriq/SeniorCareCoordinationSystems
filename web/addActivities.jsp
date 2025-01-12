@@ -8,20 +8,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <title>Create New Activities</title>
     </head>
     <body>
          <h1>Create New Activities</h1>
-        <form method ="post" action ="">
+        <form method ="post" action ="addActivityServlet">
             <label for="name">Activity Name :</label>
-            <input type="text" required>
+            <input type="text" required><br>
             <label for="name">Type :</label>
-            <input type="text" required>
+            <input type="text" required><br>
             <label for="name">Description :</label>
-            <input type="text" required>
+            <input type="text" required><br>
             <label for="name">Location :</label>
-            <input type="text" required>
+            <input type="text" required><br>
             <button type="submit">Add</button>
         </form>
     </body>
