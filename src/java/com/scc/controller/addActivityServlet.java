@@ -16,6 +16,9 @@ public class addActivityServlet extends HttpServlet {
  @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        response.setContentType("text/html;charset-UTF-8");
+        
         String activity_name = request.getParameter("activity_name");
         String activity_type = request.getParameter("activity_type");
         String activity_description = request.getParameter("activity_description");
@@ -30,11 +33,12 @@ public class addActivityServlet extends HttpServlet {
             stmt.setString(3, activity_description);
             stmt.setString(4, activity_location);
             stmt.executeUpdate();
+            response.sendRedirect("activities.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        response.sendRedirect("activities.jsp");
+        
     }
     }
 

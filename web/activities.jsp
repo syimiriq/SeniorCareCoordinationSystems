@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Activities</title>
+        <title>Manage Activities</title>
     </head>
     <body>
         <table border="1">

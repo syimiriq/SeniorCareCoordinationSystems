@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+ 
         <title>Create New Activities</title>
     </head>
     <body>
          <h1>Create New Activities</h1>
-        <form method ="post" action ="addActivityServlet">
+        <form action ="addActivityServlet" method ="post">
             <label for="name">Activity Name :</label>
             <input type="text" required><br>
             <label for="name">Type :</label>
