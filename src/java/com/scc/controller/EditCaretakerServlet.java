@@ -16,15 +16,13 @@ import javax.servlet.http.HttpSession;
  * @author Ichiro
  */
 
-
-
 public class EditCaretakerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession(false);
-        if(session == null || session.getAttribute("Admin")==null) {
+        if(session == null || session.getAttribute("Admin")== null) {
             response.sendRedirect("login.jsp");
             return;
         }

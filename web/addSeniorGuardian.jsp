@@ -84,6 +84,11 @@
 <body>
     <div class="container">
         <h2>Senior & Guardian Information</h2>
+        
+<form>
+  <button type="button" onclick="window.history.go(-1);">Back</button>
+</form>
+
 
         <!-- Form to Create or Update Senior & Guardian Info -->
         <form action="addSeniorGuardianServlet" method="post">

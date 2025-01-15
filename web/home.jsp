@@ -30,7 +30,7 @@
     }
     %>
         
-    
+    <a href="addSeniorGuardian.jsp">Manage Senior</a>
 
         <form action="LogoutServlet" method="get">
         <button type="submit">Logout</button>
