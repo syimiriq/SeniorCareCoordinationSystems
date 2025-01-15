@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import java.util.*;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/SearchCaretakerServlet")
+
 public class SearchCaretakerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

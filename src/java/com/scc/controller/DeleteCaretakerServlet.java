@@ -14,11 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
-import java.sql.*;
 
-@WebServlet("/DeleteCaretakerServlet")
+
 public class DeleteCaretakerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
