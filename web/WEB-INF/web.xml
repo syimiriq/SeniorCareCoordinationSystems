@@ -20,6 +20,10 @@
         <servlet-name>DeleteCaretakerServlet</servlet-name>
         <servlet-class>com.scc.controller.DeleteCaretakerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchCaretakerServlet</servlet-name>
+        <servlet-class>com.scc.controller.SearchCaretakerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>DeleteCaretakerServlet</servlet-name>
         <url-pattern>/DeleteCaretakerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchCaretakerServlet</servlet-name>
+        <url-pattern>/SearchCaretakerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -16,7 +16,7 @@ public class Caretaker {
     private String Username;
     private String Password;
     private String Role;
-    private String Status;
+    private Boolean Status;
 
     // Getters and Setters
     public int getCaretakerID() { return ID; }

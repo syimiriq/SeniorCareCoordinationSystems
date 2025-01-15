@@ -5,19 +5,30 @@
 --%>
 
 <%@page import="java.sql.*"%>
-<%@page import="com.scc.model.Caretakers"%>
-<%
-    Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
-    Statement stmt = conn.createStatement();
-    ResultSet rs = stmt.executeQuery("SELECT * FROM CARETAKERS");
-%>
+<%@page import="com.scc.model.Admins"%>
+
 <html>
 <head>
     <title>Manage Caretakers</title>
 </head>
 <body>
     <h1>Manage Caretakers</h1>
+    
     <a href="addCaretaker.jsp">Add New Caretaker</a>
+    <a href="searchCaretaker.jsp">Search Caretaker</a>
+    
+    <%
+        if(session == null || session.getAttribute("Admin")==null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+        else{ 
+            Admins admin = (Admins)session.getAttribute("Admin");
+        }               
+            
+    %>
+    
+    
     <table border="1">
         <tr>
             <th>ID</th>
@@ -26,10 +37,23 @@
             <th>Phone</th>
             <th>Role</th>
             <th>Status</th>
-            <th>Actions</th>
         </tr>
-        <% while (rs.next()) { %>
-        <tr>
+        
+        <%
+            Connection conn = null;
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            
+            try {
+                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
+                String query = "SELECT * FROM CARETAKERS";
+                stmt = conn.prepareStatement(query);
+                rs = stmt.executeQuery();
+                
+                while (rs.next()) {    
+        %>
+        
+        <tr> 
             <td><%= rs.getInt("ID") %></td>
             <td><%= rs.getString("NAME") %></td>
             <td><%= rs.getString("EMAIL") %></td>
@@ -38,10 +62,24 @@
             <td><%= rs.getBoolean("STATUS") ? "Active" : "Inactive" %></td>
             <td>
                 <a href="editCaretaker.jsp?id=<%= rs.getInt("ID") %>">Edit</a>
-                <a href="deleteCaretaker?id=<%= rs.getInt("ID") %>">Delete</a>
+                <a href="DeleteCaretakerServlet?id=<%= rs.getInt("ID") %>" onclick="return confirm('Are you sure you want to delete this caretaker?');">Delete</a>
             </td>
         </tr>
-        <% } %>
+        <%
+                }
+            } catch (SQLException e) {
+                out.println("Error retrieving caretaker records: " + e.getMessage());
+            } finally {
+                try {
+                    if (rs != null) rs.close();
+                    if (stmt != null) stmt.close();
+                    if (conn != null) conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        %>
     </table>
+    
 </body>
 </html>

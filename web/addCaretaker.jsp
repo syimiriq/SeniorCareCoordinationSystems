@@ -19,6 +19,8 @@
         <input type="text" name="phone" required><br>
         <label for="role">Role:</label>
         <input type="text" name="role" required><br>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br>
         <label for="password">Password:</label>
         <input type="password" name="password" required><br>
         <button type="submit">Add</button>
