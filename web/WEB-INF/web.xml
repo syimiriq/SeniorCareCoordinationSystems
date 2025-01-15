@@ -14,7 +14,11 @@
     </servlet>
     <servlet>
         <servlet-name>EditCaretakerServlet</servlet-name>
-        <servlet-class>EditCaretakerServlet</servlet-class>
+        <servlet-class>com.scc.controller.EditCaretakerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCaretakerServlet</servlet-name>
+        <servlet-class>com.scc.controller.AddCaretakerServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteCaretakerServlet</servlet-name>
@@ -23,6 +27,14 @@
     <servlet>
         <servlet-name>SearchCaretakerServlet</servlet-name>
         <servlet-class>com.scc.controller.SearchCaretakerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addActivityServlet</servlet-name>
+        <servlet-class>com.scc.controller.addActivityServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addSeniorGuardianServlet</servlet-name>
+        <servlet-class>com.scc.controller.addSeniorGuardianServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -41,12 +53,24 @@
         <url-pattern>/EditCaretakerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AddCaretakerServlet</servlet-name>
+        <url-pattern>/AddCaretakerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>DeleteCaretakerServlet</servlet-name>
         <url-pattern>/DeleteCaretakerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchCaretakerServlet</servlet-name>
         <url-pattern>/SearchCaretakerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addActivityServlet</servlet-name>
+        <url-pattern>/addActivityServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addSeniorGuardianServlet</servlet-name>
+        <url-pattern>/addSeniorGuardianServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
