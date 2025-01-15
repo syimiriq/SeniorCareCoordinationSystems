@@ -23,9 +23,7 @@ public class AddCaretakerServlet extends HttpServlet {
             response.sendRedirect("login.jsp");
             return;
         }      
-            
-        
-        
+
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");

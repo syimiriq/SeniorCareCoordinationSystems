@@ -4,6 +4,9 @@
     Author     : user
 --%>
 
+
+<%@page import="java.sql.*"%>
+<%@page import="com.scc.model.Admins"%>
 <%@page contentType="text/html" language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,38 +91,61 @@
 <form>
   <button type="button" onclick="window.history.go(-1);">Back</button>
 </form>
+        
+        <form action="addSeniorServlet" method="post">
+    <input type="hidden" name="action" value="create"> <!-- "create" for new entries -->
 
+    <section>
+        <h3>Senior Details</h3>
+        <div>
+            <label for="seniorName">Name</label>
+            <input type="text" id="seniorName" name="seniorName" required>
+        </div>
+        <div>
+            <label for="seniorGender">Gender</label>
+            <select id="seniorGender" name="seniorGender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label for="seniorDob">Date of Birth</label>
+            <input type="date" id="seniorDob" name="seniorDob" required>
+        </div>
+        <div>
+            <label for="guardianID">Assign Guardian</label>
+            <select id="guardianID" name="guardianID" required>
+                <option value="">Select Guardian</option>
+                <%-- Dynamically populate this dropdown with guardian records --%>
+                <%
+                    try {
+                        Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
+                        Statement stmt = conn.createStatement();
+                        ResultSet rs = stmt.executeQuery("SELECT ID, name FROM GUARDIANS");
+                        while (rs.next()) {
+                %>
+                            <option value="<%= rs.getInt("ID") %>">
+                                <%= rs.getString("name") %>
+                            </option>
+                <%
+                        }
+                        conn.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                %>
+            </select>
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </section>
+</form>
 
-        <!-- Form to Create or Update Senior & Guardian Info -->
-        <form action="addSeniorGuardianServlet" method="post">
+         <br>
+        <form action="addGuardianServlet" method="post">
             <input type="hidden" name="action" value="create"> <!-- "create" for new entries -->
-
-            <!-- Senior Details -->
-            <section>
-                <h3>Senior Details</h3>
-                <div>
-                    <label for="seniorName">Name</label>
-                    <input type="text" id="seniorName" name="seniorName" required>
-                </div>
-                <div>
-                    <label for="seniorAge">Age</label>
-                    <input type="number" id="seniorAge" name="seniorAge" required>
-                </div>
-                <div>
-                    <label for="seniorDob">Date of Birth</label>
-                    <input type="date" id="seniorDob" name="seniorDob" required>
-                </div>
-                <div>
-                    <label for="seniorGender">Gender</label>
-                    <select id="seniorGender" name="seniorGender" required>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-            </section>
-
-            <!-- Guardian Details -->
+                 <!-- Guardian Details -->
             <section>
                 <h3>Guardian Details</h3>
                 <div>
@@ -156,57 +182,68 @@
                     <label for="guardianAddress">Address</label>
                     <textarea id="guardianAddress" name="guardianAddress" rows="3" required></textarea>
                 </div>
+                <br>
+                 <button type="submit">Submit</button>
             </section>
+            
 
-            <button type="submit">Submit</button>
+            </section>
         </form>
-
+        
+                    
         <!-- Table to Display Existing Records -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Senior Name</th>
-                    <th>Senior Age</th>
-                    <th>Senior Birth date</th>
-                    <th>Senior Gender</th>
-                    <th>Guardian Name</th>
-                    <th>Guardian Gender</th>
-                    <th>Guardian Contact</th>
-                    <th>Guardian Relationship</th>
-                    <th>Guardian Birth date</th>
-                    <th>Guardian Address</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%-- Example hardcoded rows, replace with dynamic rows from a database --%>
-                <tr>
-                    <td>John Doe</td>
-                    <td>80</td>
-                    <td>1943-01-15</td>
-                    <td>Male</td>
-                    <td>Jane Doe</td>
-                    <td>Female</td>
-                    <td>123-456-7890</td>
-                    <td>nothhin</td>
-                    <td>1970-05-20</td>
-                    <td>123 Elm St, Springfield</td>
-                    <td class="actions">
-                        <form action="SeniorGuardianServlet" method="post" style="display:inline;">
-                            <input type="hidden" name="action" value="edit">
-                            <input type="hidden" name="id" value="1"> <!-- Example ID -->
-                            <button type="submit">Edit</button>
-                        </form>
-                        <form action="SeniorGuardianServlet" method="post" style="display:inline;">
-                            <input type="hidden" name="action" value="delete">
-                            <input type="hidden" name="id" value="1"> <!-- Example ID -->
-                            <button type="submit">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-                <%-- End hardcoded rows --%>
-            </tbody>
-        </table>
+        <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Guardian Name</th>
+            <th>Guardian Phone</th>
+            <th>Guardian Address</th>
+        </tr>
+        
+        <%
+            Connection conn = null;
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            
+            try {
+                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
+                String query = "SELECT * FROM SENIORS";//ubah ni nnti
+                stmt = conn.prepareStatement(query);
+                rs = stmt.executeQuery();
+                
+                while (rs.next()) {    
+        %>
+        
+        <tr> 
+            <td><%= rs.getString("senior_name") %></td>
+            <td><%= rs.getString("senior_gender") %></td>
+            <td><%= rs.getDate("senior_dob") %></td>
+            <td><%= rs.getString("guardian_name") %></td>
+            <td><%= rs.getString("guardian_phone") %></td>
+            <td><%= rs.getString("guardian_address") %></td>
+            <td>
+                <a href="editSeniorGuardian.jsp?id=<%= rs.getInt("ID") %>">Edit</a>
+                <a href="DeleteSeniorGuardianServlet?id=<%= rs.getInt("ID") %>" onclick="return confirm('Are you sure you want to delete this caretaker?');">Delete</a>
+            </td>
+        </tr>
+        <%
+                }
+            } catch (SQLException e) {
+                out.println("Error retrieving caretaker records: " + e.getMessage());
+            } finally {
+                try {
+                    if (rs != null) rs.close();
+                    if (stmt != null) stmt.close();
+                    if (conn != null) conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        %>
+    </table>
+    
     </div>
 </body>
 </html>

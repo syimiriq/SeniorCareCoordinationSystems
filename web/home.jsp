@@ -4,6 +4,7 @@
     Author     : Syamir
 --%>
 
+
 <%@page import="com.scc.model.Caretakers"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
@@ -31,8 +32,10 @@
     %>
         
     <a href="addSeniorGuardian.jsp">Manage Senior</a>
+    
 
         <form action="LogoutServlet" method="get">
+            <br>
         <button type="submit">Logout</button>
     </form>
 </body>

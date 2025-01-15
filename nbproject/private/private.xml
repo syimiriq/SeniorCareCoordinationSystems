@@ -3,31 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/Caretaker.java</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/AddCaretakerServlet.java</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/nbproject/build-impl.xml</file>
-=======
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/config.jsp</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/Caretaker.java</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/AddCaretakerServlet.java</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/WEB-INF/web.xml</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/DeleteCaretakerServlet.java</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/login.jsp</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/home.jsp</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/LoginServlet.java</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/EditCaretakerServlet.java</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/index.html</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/caretakers.jsp</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/RegistrationServlet.java</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/adminhome.jsp</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/nbproject/build-impl.xml</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/register.jsp</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/dashboard.jsp</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/nbproject/private/private.xml</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/LogoutServlet.java</file>
-            <file>file:/I:/GitHub/SeniorCareCoordinationSystems/web/addCaretaker.jsp</file>
->>>>>>> Stashed changes
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/register.jsp</file>
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/editCaretaker.jsp</file>
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/home.jsp</file>
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/addGuardianServlet.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/AddCaretakerServlet.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/addSeniorGuardian.jsp</file>
         </group>
     </open-files>
 </project-private>
