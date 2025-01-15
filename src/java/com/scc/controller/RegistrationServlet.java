@@ -58,7 +58,7 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+     //   processRequest(request, response);
     }
 
     /**
@@ -72,10 +72,9 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        int phone = Integer.parseInt(request.getParameter("phone"));
+        String phone = request.getParameter("phone");
         String role = request.getParameter("role");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -91,18 +90,19 @@ public class RegistrationServlet extends HttpServlet {
                 PreparedStatement stmt = conn.prepareStatement(query);
                 stmt.setString(1,name);
                 stmt.setString(2,email);
-                stmt.setInt(3, phone);
+                stmt.setString(3, phone);
                 stmt.setString(4, username);
                 stmt.setString(5, hashedPassword);
                 stmt.setString(6,role);
                 stmt.setBoolean(7,status);
                 stmt.executeUpdate();
-                conn.close();  
+                conn.close();
                 response.sendRedirect("login.jsp");
             } catch (SQLException e) {
             e.printStackTrace();
+            response.getWriter().println("<html><body><h2>Error: " + e.getMessage() + "</h2></body></html>");
+
         }
-        
     }
 
     /**

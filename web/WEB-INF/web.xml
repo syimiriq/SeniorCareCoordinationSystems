@@ -13,14 +13,6 @@
         <servlet-class>com.scc.controller.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddCaretakerServlet</servlet-name>
-        <servlet-class>AddCaretakerServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddCaretaker</servlet-name>
-        <servlet-class>com.scc.controller.AddCaretaker</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>EditCaretakerServlet</servlet-name>
         <servlet-class>EditCaretakerServlet</servlet-class>
     </servlet>
@@ -39,14 +31,6 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddCaretakerServlet</servlet-name>
-        <url-pattern>/AddCaretakerServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddCaretaker</servlet-name>
-        <url-pattern>/AddCaretaker</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EditCaretakerServlet</servlet-name>

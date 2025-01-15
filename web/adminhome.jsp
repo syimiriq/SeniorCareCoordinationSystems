@@ -29,8 +29,8 @@
     <%
     }
     %>
-        
     
+    <a href="caretakers.jsp">Caretaker</a>
 
         <form action="LogoutServlet" method="get">
         <button type="submit">Logout</button>
