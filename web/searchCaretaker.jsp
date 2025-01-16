@@ -7,6 +7,7 @@
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
 
+
 <html>
 <head>
     <title>Search Caretakers</title>
