@@ -76,8 +76,6 @@
         <input type="email" name="email" value="<%= email %>" required><br>
         <label for="username">Username:</label>
         <input type="text" name="username" value="<%= username %>" required><br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" value="<%= password %>" required><br>
         <label for="phone">Phone:</label>
         <input type="text" name="phone" value="<%= phone %>" required><br>
         <label for="role">Role:</label>
@@ -87,6 +85,8 @@
             <option value="true" <%= status ? "selected" : "" %>>Active</option>
             <option value="false" <%= !status ? "selected" : "" %>>Inactive</option>
         </select><br>
+        <label for="password">New Password:</label>
+        <input type="password" name="password" placeholder="Enter new password"><br>
         <button type="submit">Save Changes</button>
     </form>
 

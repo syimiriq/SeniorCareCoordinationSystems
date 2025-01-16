@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 import javax.servlet.http.HttpSession;
+import org.mindrot.jbcrypt.BCrypt;
 
 
 public class AddCaretakerServlet extends HttpServlet {
@@ -31,6 +32,8 @@ public class AddCaretakerServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         boolean status = true; // default active status
+        
+        password = BCrypt.hashpw(password, BCrypt.gensalt());
         
         // Validate inputs
         if (name == null || email == null || phone == null || role == null || username == null || password == null) {

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import javax.servlet.http.HttpSession;
+import org.mindrot.jbcrypt.BCrypt;
 /**
  *
  * @author Ichiro
@@ -46,15 +47,35 @@ public class EditCaretakerServlet extends HttpServlet {
             System.out.println("Status: " + status); 
             
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
-            String sql = "UPDATE CARETAKERS SET NAME = ?, EMAIL = ?, PHONE = ?, USERNAME = ? PASSWORD = ? ROLE = ? STATUS = ? WHERE ID = ?";
+            
+            String currentPassword = null;
+            String selectQuery = "SELECT PASSWORD FROM CARETAKERS WHERE ID = ?";
+            PreparedStatement selectStmt = conn.prepareStatement(selectQuery);
+            selectStmt.setInt(1, id);
+            ResultSet rs = selectStmt.executeQuery();
+            if (rs.next()) {
+                currentPassword = rs.getString("PASSWORD");
+            }
+
+            // If no new password is provided, keep the current password
+            if (password == null || password.isEmpty()) {
+                password = currentPassword; // No password change
+            } else {
+                // Hash the new password before saving
+                password = BCrypt.hashpw(password, BCrypt.gensalt());
+            }
+            
+            // Corrected SQL query with commas between fields
+            String sql = "UPDATE CARETAKERS SET NAME = ?, EMAIL = ?, PHONE = ?, USERNAME = ?, PASSWORD = ?, ROLE = ?, STATUS = ? WHERE ID = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, name);
             stmt.setString(2, email);
             stmt.setString(3, phone);
             stmt.setString(4, username);
-            stmt.setString(5, password); // Hash the password in production
+            stmt.setString(5, password); // Store the hashed password
             stmt.setString(6, role); 
             stmt.setBoolean(7, status);
+            stmt.setInt(8, id); // Set the ID of the record to update
             stmt.executeUpdate();
             
             conn.close();   
@@ -67,4 +88,3 @@ public class EditCaretakerServlet extends HttpServlet {
         response.sendRedirect("caretakers.jsp");
     }
 }
-
