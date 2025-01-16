@@ -10,6 +10,7 @@
     <title>Add Caretaker</title>
 </head>
 <body>
+    
     <h1>Add New Caretaker</h1>
     <form action="AddCaretakerServlet" method="post">
         <label for="name">Name:</label>
