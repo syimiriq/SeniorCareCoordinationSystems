@@ -31,7 +31,8 @@
     }
     %>
         
-    <a href="addSeniorGuardian.jsp">Manage Senior</a>
+    <a href="senior.jsp">Manage Senior</a>
+    <a href="guardian.jsp">Manage Guardian</a>
     
 
         <form action="LogoutServlet" method="get">

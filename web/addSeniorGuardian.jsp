@@ -92,69 +92,39 @@
   <button type="button" onclick="window.history.go(-1);">Back</button>
 </form>
         
-        <form action="addSeniorServlet" method="post">
-    <input type="hidden" name="action" value="create"> <!-- "create" for new entries -->
-
-    <section>
-        <h3>Senior Details</h3>
-        <div>
-            <label for="seniorName">Name</label>
-            <input type="text" id="seniorName" name="seniorName" required>
-        </div>
-        <div>
-            <label for="seniorGender">Gender</label>
-            <select id="seniorGender" name="seniorGender" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <div>
-            <label for="seniorDob">Date of Birth</label>
-            <input type="date" id="seniorDob" name="seniorDob" required>
-        </div>
-        <div>
-            <label for="guardianID">Assign Guardian</label>
-            <select id="guardianID" name="guardianID" required>
-                <option value="">Select Guardian</option>
-                <%-- Dynamically populate this dropdown with guardian records --%>
-                <%
-                    try {
-                        Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
-                        Statement stmt = conn.createStatement();
-                        ResultSet rs = stmt.executeQuery("SELECT ID, name FROM GUARDIANS");
-                        while (rs.next()) {
-                %>
-                            <option value="<%= rs.getInt("ID") %>">
-                                <%= rs.getString("name") %>
-                            </option>
-                <%
-                        }
-                        conn.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                %>
-            </select>
-        </div>
-        <br>
-        <button type="submit">Submit</button>
-    </section>
-</form>
-
-         <br>
-        <form action="addGuardianServlet" method="post">
-            <input type="hidden" name="action" value="create"> <!-- "create" for new entries -->
-                 <!-- Guardian Details -->
+        <form action="addSeniorGuardianServlet" method="post">
+            <!-- Senior Details -->
             <section>
-                <h3>Guardian Details</h3>
+                <h3>Senior Details</h3>
+                <div>
+                    <label for="seniorName">Name</label>
+                    <input type="text" id="seniorName" name="seniorName" required>
+                </div>
+                <div>
+                    <label for="seniorGender">Gender</label>
+                    <select id="seniorGender" name="seniorGender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="seniorDob">Date of Birth</label>
+                    <input type="date" id="seniorDob" name="seniorDob" required>
+                </div>
+            </section>
+
+            <!-- Guardian Details (Optional) -->
+            <section>
+                <h3>Guardian Details (Optional)</h3>
                 <div>
                     <label for="guardianName">Name</label>
-                    <input type="text" id="guardianName" name="guardianName" required>
+                    <input type="text" id="guardianName" name="guardianName">
                 </div>
                 <div>
                     <label for="guardianGender">Gender</label>
-                    <select id="guardianGender" name="guardianGender" required>
+                    <select id="guardianGender" name="guardianGender">
+                        <option value="">Select</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">Other</option>
@@ -162,35 +132,35 @@
                 </div>
                 <div>
                     <label for="guardianContact">Contact</label>
-                    <input type="text" id="guardianContact" name="guardianContact" required>
+                    <input type="text" id="guardianContact" name="guardianContact">
                 </div>
                 <div>
-                <label for="relationship">Relationship</label>
-                <select id="relationship" name="relationship" required>
-                    <option value="parent">Parent</option>
-                    <option value="child">Child</option>
-                    <option value="spouse">Spouse</option>
-                    <option value="relative">Relative</option>
-                    <option value="friend">Guardian</option>
-                </select>
+                    <label for="relationship">Relationship</label>
+                    <select id="relationship" name="relationship">
+                        <option value="">Select</option>
+                        <option value="parent">Parent</option>
+                        <option value="child">Child</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="relative">Relative</option>
+                        <option value="friend">Guardian</option>
+                    </select>
                 </div>
                 <div>
                     <label for="guardianDob">Date of Birth</label>
-                    <input type="date" id="guardianDob" name="guardianDob" required>
+                    <input type="date" id="guardianDob" name="guardianDob">
                 </div>
                 <div>
                     <label for="guardianAddress">Address</label>
-                    <textarea id="guardianAddress" name="guardianAddress" rows="3" required></textarea>
+                    <textarea id="guardianAddress" name="guardianAddress" rows="3"></textarea>
                 </div>
-                <br>
-                 <button type="submit">Submit</button>
             </section>
-            
-
-            </section>
+            <br>
+            <button type="submit">Submit</button>
         </form>
+    </div>
+</body>
+</html>
         
-                    
         <!-- Table to Display Existing Records -->
         <table border="1">
         <tr>

@@ -12,6 +12,11 @@
     <title>Manage Caretakers</title>
 </head>
 <body>
+    
+<form>
+    <button type="button" onclick="window.location.href='adminhome.jsp';">Back</button>
+</form>
+
     <h1>Manage Caretakers</h1>
     
     <a href="addCaretaker.jsp">Add New Caretaker</a>
