@@ -40,6 +40,30 @@
         <servlet-name>SearchCaretakerServlet</servlet-name>
         <servlet-class>com.scc.controller.SearchCaretakerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddSeniorServlet</servlet-name>
+        <servlet-class>com.scc.controller.AddSeniorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteSeniorServlet</servlet-name>
+        <servlet-class>com.scc.controller.DeleteSeniorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddGuardianServlet</servlet-name>
+        <servlet-class>com.scc.controller.AddGuardianServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddGuardianServlet</servlet-name>
+        <url-pattern>/AddGuardianServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddSeniorServlet</servlet-name>
+        <url-pattern>/AddSeniorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCaretakerServlet</servlet-name>
+        <url-pattern>/DeleteCaretakerServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddCaretakerServlet</servlet-name>
         <url-pattern>/AddCaretakerServlet</url-pattern>

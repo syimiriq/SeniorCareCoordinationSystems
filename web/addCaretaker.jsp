@@ -10,6 +10,9 @@
     <title>Add Caretaker</title>
 </head>
 <body>
+    <form>
+        <button type="button" onclick="window.history.go(-1);">Back</button>
+    </form>
     
     <h1>Add New Caretaker</h1>
     <form action="AddCaretakerServlet" method="post">
