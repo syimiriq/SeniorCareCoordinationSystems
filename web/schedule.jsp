@@ -4,7 +4,8 @@
     Author     : NITRO
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="com.scc.model.Activities"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,13 +16,44 @@
         <table border="1">
         <tr>
             <th>Activities ID</th>
-            <th>Activities Name</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Location</th>
+            <th>Senior ID</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Caretaker ID</th>
         </tr>
-        
+        <% 
+            
+            Connection conn = null;
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            
+            try {
+                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
+                String query = "SELECT * FROM SCHEDULES";
+                stmt = conn.prepareStatement(query);
+                rs = stmt.executeQuery();
+                
+                while (rs.next()) {    
+      
+           
+        %>
+        <%
+                }
+            } catch (SQLException e) {
+                out.println("Error retrieving schedule records: " + e.getMessage());
+            } finally {
+                try {
+                    if (rs != null) rs.close();
+                    if (stmt != null) stmt.close();
+                    if (conn != null) conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        %>
         </table>
-        <button type="button" onclick="location.href='addActivities.jsp'">Add New Acitivites</button>
+        <button type="button" onclick="location.href='addSchedule.jsp'">Add New Schedule</button>
     </body>
 </html>

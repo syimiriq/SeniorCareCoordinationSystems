@@ -13,16 +13,24 @@
     </head>
    <body>
          <h1>Create New Schedule</h1>
-        <form method ="post" action ="">
-            <label for="name">Name ID:</label>
+        <form action ="addScheduleServlet" method ="post" >
+            
+            <label >Senior ID:</label>
             <input type="text" required>
-            <label for="name">Senior ID:</label>
+            <label >Activity ID:</label>
             <input type="text" required>
-            <label for="name">Activity ID:</label>
+            <label for="start">Start Time:</label>
             <input type="text" required>
-            <label for="name">Location :</label>
+            <label for="end">End Time:</label>
+            <input type="text" required>
+            <label for="date">Date:</label>
+            <input type="text" required>
+            <label for="status">Status :</label>
+            <input type="text" required>
+            <label >Caretaker ID:</label>
             <input type="text" required>
             <button type="submit">Add</button>
+            
         </form>
     </body>
 </html>

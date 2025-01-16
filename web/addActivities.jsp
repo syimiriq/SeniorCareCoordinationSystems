@@ -14,14 +14,14 @@
     <body>
          <h1>Create New Activities</h1>
         <form action ="addActivityServlet" method ="post">
-            <label for="name">Activity Name :</label>
-            <input type="text" required><br>
-            <label for="name">Type :</label>
-            <input type="text" required><br>
-            <label for="name">Description :</label>
-            <input type="text" required><br>
-            <label for="name">Location :</label>
-            <input type="text" required><br>
+            <label >Activity Name :</label>
+            <input type="text" name="name" required><br>
+            <label >Type :</label>
+            <input type="text" name="type"required><br>
+            <label >Description :</label>
+            <input type="text"  name="description"required><br>
+            <label  >Location :</label>
+            <input type="text" name="location" required><br>
             <button type="submit">Add</button>
         </form>
     </body>

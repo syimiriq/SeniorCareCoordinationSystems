@@ -10,32 +10,32 @@ package com.scc.model;
  * @author NITRO
  */
 public class Activities implements java.io.Serializable{
-    private int activityID;
-    private String activity_name;
-    private String activity_type;
-    private String activity_description;
-    private String activity_location;
+    private int ID;
+    private String name;
+    private String type;
+    private String description;
+    private String location;
     
- public Activities(int activityID, String activity_name,String activity_type,String activity_description,String activity_location){
-    this.activityID = activityID;
-    this.activity_name = activity_name;
-    this.activity_type = activity_type;
-    this.activity_description = activity_description;
-    this.activity_location = activity_location;
+ public Activities(int ID, String name,String type,String description,String location){
+    this.ID = ID;
+    this.name = name;
+    this.type = type;
+    this.description = description;
+    this.location = location;
     }
- public int getactivityID(){
-        return activityID;
+ public int getID(){
+        return ID;
     }
-    public String getactivity_name(){
-        return activity_name;
+    public String getname(){
+        return name;
     }
-    public String getactivity_type(){
-        return activity_type;
+    public String get_type(){
+        return type;
     }
-    public String getactivity_description(){
-        return activity_description;
+    public String getdescription(){
+        return description;
     }
-    public String getactivity_location() {
-        return activity_location;
+    public String getlocation() {
+        return location;
     }
 }

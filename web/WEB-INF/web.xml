@@ -17,12 +17,24 @@
         <servlet-class>com.scc.controller.EditCaretakerServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>deleteActivityServlet</servlet-name>
+        <servlet-class>com.scc.controller.deleteActivityServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>DeleteCaretakerServlet</servlet-name>
         <servlet-class>com.scc.controller.DeleteCaretakerServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>addActivityServlet</servlet-name>
+        <servlet-class>com.scc.controller.addActivityServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AddCaretakerServlet</servlet-name>
         <servlet-class>com.scc.controller.AddCaretakerServlet</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>editActivityServlet</servlet-name>
+        <servlet-class>com.scc.controller.editActivityServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchCaretakerServlet</servlet-name>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>AddCaretakerServlet</servlet-name>
         <url-pattern>/AddCaretakerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteActivityServlet</servlet-name>
+        <url-pattern>/deleteActivityServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addActivityServlet</servlet-name>
+        <url-pattern>/addActivityServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editActivityServlet</servlet-name>
+        <url-pattern>/editActivityServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
