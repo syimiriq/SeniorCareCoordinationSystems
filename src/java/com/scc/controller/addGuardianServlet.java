@@ -21,7 +21,7 @@ public class addGuardianServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
             String sql = "INSERT INTO GUARDIANS (NAME, PHONE, GENDER, DATEOFBIRTH, ADDRESS) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(query);
+            PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, name);
             stmt.setString(2, phone);
             stmt.setString(3, gender);
