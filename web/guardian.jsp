@@ -43,66 +43,69 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-        <%
-            Connection conn = null;
-            PreparedStatement stmt = null;
-            ResultSet rs = null;
-            
-            try {
-                // Database connection
-                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
-                
-                // Query to fetch guardians
-                String query = "SELECT * FROM GUARDIANS";
-                stmt = conn.prepareStatement(query);
-                rs = stmt.executeQuery();
-                
-                while (rs.next()) {
-                    // Fetch guardian data
-                    int id = rs.getInt("ID");
-                    String name = rs.getString("NAME");
-                    String gender = rs.getString("GENDER");
-                    String phone = rs.getString("PHONE");
-                    String dobString = rs.getString("DATEOFBIRTH"); // Assuming "YYYY-MM-DD" format
-                    
-                    // Parse the date of birth to calculate age
+<tbody>
+<%
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+
+    try {
+        conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
+        String query = "SELECT * FROM GUARDIANS";
+        stmt = conn.prepareStatement(query);
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            int id = rs.getInt("ID");
+            String name = rs.getString("NAME");
+            String gender = rs.getString("GENDER");
+            String phone = rs.getString("PHONE");
+            String dobString = rs.getString("DATEOFBIRTH");
+
+            // Initialize age variable
+            String ageDisplay = "N/A";
+
+            // Check if dobString is not null or empty
+            if (dobString != null && !dobString.trim().isEmpty()) {
+                try {
                     LocalDate dob = LocalDate.parse(dobString);
                     LocalDate currentDate = LocalDate.now();
                     int age = Period.between(dob, currentDate).getYears();
-        %>
-            <tr>
-                <td><%= id %></td>
-                <td><%= name %></td>
-                <td><%= gender %></td>
-                <td><%= age %> years</td>
-                <td><%= phone %></td>
-                <td>
-                    <a href="editGuardian.jsp?id=<%= id %>">Edit</a>
-                    <a href="DeleteGuardianServlet?id=<%= id %>" 
-                       onclick="return confirm('Are you sure you want to delete this guardian?');">Delete</a>
-                </td>
-            </tr>
-        <%
-                }
-            } catch (SQLException e) {
-                // Display error message in case of issues with database retrieval
-                out.println("<tr><td colspan='6'>Error retrieving guardian records: " + e.getMessage() + "</td></tr>");
-            } finally {
-                // Close resources to prevent memory leaks
-                try {
-                    if (rs != null) rs.close();
-                    if (stmt != null) stmt.close();
-                    if (conn != null) conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    ageDisplay = age + " years";
+                } catch (Exception e) {
+                    // Handle invalid date format
+                    ageDisplay = "Invalid Date";
                 }
             }
-        %>
-        </tbody>
+%>
+    <tr>
+        <td><%= id %></td>
+        <td><%= name %></td>
+        <td><%= gender %></td>
+        <td><%= ageDisplay %></td>
+        <td><%= phone %></td>
+        <td>
+            <a href="editGuardian.jsp?id=<%= id %>">Edit</a>
+            <a href="DeleteGuardianServlet?id=<%= id %>" 
+               onclick="return confirm('Are you sure you want to delete <%= name %>?');">Delete</a>
+        </td>
+    </tr>
+<%
+        }
+    } catch (SQLException e) {
+        out.println("<tr><td colspan='6'>Error retrieving guardian records: " + e.getMessage() + "</td></tr>");
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+%>
+</tbody>
+
     </table>
 </body>
 </html>
-
-
-

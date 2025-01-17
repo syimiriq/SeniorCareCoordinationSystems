@@ -22,7 +22,7 @@ public class Guardian {
         this.dateofbirth = dateofbirth;
     }
 
-    public int getID() {
+    public int getGuardianID() {
         return ID;
     }
 
@@ -46,7 +46,7 @@ public class Guardian {
         return dateofbirth;
     }
 
-    public void setID(int ID) {
+    public void setGuardianID(int ID) {
         this.ID = ID;
     }
 

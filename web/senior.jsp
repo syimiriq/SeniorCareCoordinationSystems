@@ -57,13 +57,10 @@
                     int id = rs.getInt("ID");
                     String name = rs.getString("NAME");
                     String gender = rs.getString("GENDER");
-                    String dobString = rs.getString("DATEOFBIRTH"); // Assuming it's stored as a string in "YYYY-MM-DD" format
-                    
-                    // Parse the date of birth
+                    String dobString = rs.getString("DATEOFBIRTH");
                     LocalDate dob = LocalDate.parse(dobString);
                     LocalDate currentDate = LocalDate.now();
-                    
-                    // Calculate age
+
                     int age = Period.between(dob, currentDate).getYears();
         %>
         
@@ -74,7 +71,7 @@
             <td><%= age %> years</td>
             <td>
                 <a href="editSenior.jsp?id=<%= id %>">Edit</a>
-                <a href="DeleteSeniorServlet?id=<%= id %>" onclick="return confirm('Are you sure you want to delete this senior?');">Delete</a>
+                <a href="DeleteSeniorServlet?id=<%= id %>" onclick="return confirm('Delete <%= name %> senior?');">Delete</a>
             </td>
         </tr>
         <%

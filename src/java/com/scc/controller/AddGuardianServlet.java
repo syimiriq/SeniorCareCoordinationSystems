@@ -24,12 +24,12 @@ public class AddGuardianServlet extends HttpServlet {
         // Retrieve form parameters
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
-        String contact = request.getParameter("contact");
+        String phone = request.getParameter("phone");
         String dateofbirth = request.getParameter("dateofbirth");
         String address = request.getParameter("address");
 
         // Validate required fields
-        if (name == null || name.isEmpty() || gender == null || gender.isEmpty() || contact == null || contact.isEmpty()) {
+        if (name == null || name.isEmpty() || gender == null || gender.isEmpty() || phone == null || phone.isEmpty()) {
             response.getWriter().println("Name, Gender, and Contact are required fields!");
             return;
         }
@@ -40,9 +40,9 @@ public class AddGuardianServlet extends HttpServlet {
 
             stmt.setString(1, name);
             stmt.setString(2, gender);
-            stmt.setString(3, contact);
-            stmt.setString(4, dateofbirth != null && !dateofbirth.isEmpty() ? dateofbirth : null);   // Date of birth is optional
-            stmt.setString(5, address != null && !address.isEmpty() ? address : null);               // Address is optional
+            stmt.setString(3, phone);
+            stmt.setDate(4, Date.valueOf(dateofbirth));
+            stmt.setString(5, address != null && !address.isEmpty() ? address : null);
             stmt.executeUpdate();
 
             response.sendRedirect("guardian.jsp");

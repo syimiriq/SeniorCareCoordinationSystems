@@ -17,12 +17,28 @@
         <servlet-class>com.scc.controller.EditCaretakerServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EditSeniorServlet</servlet-name>
+        <servlet-class>com.scc.controller.EditSeniorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditGuardianServlet</servlet-name>
+        <servlet-class>com.scc.controller.EditGuardianServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>deleteActivityServlet</servlet-name>
         <servlet-class>com.scc.controller.deleteActivityServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteCaretakerServlet</servlet-name>
         <servlet-class>com.scc.controller.DeleteCaretakerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteSeniorServlet</servlet-name>
+        <servlet-class>com.scc.controller.DeleteSeniorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteGuardianServlet</servlet-name>
+        <servlet-class>com.scc.controller.DeleteGuardianServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addActivityServlet</servlet-name>
@@ -43,10 +59,6 @@
     <servlet>
         <servlet-name>AddSeniorServlet</servlet-name>
         <servlet-class>com.scc.controller.AddSeniorServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteSeniorServlet</servlet-name>
-        <servlet-class>com.scc.controller.DeleteSeniorServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddGuardianServlet</servlet-name>
@@ -97,8 +109,24 @@
         <url-pattern>/EditCaretakerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>EditGuardianServlet</servlet-name>
+        <url-pattern>/EditGuardianServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditSeniorServlet</servlet-name>
+        <url-pattern>/EditSeniorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>DeleteCaretakerServlet</servlet-name>
         <url-pattern>/DeleteCaretakerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSeniorServlet</servlet-name>
+        <url-pattern>/DeleteSeniorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteGuardianServlet</servlet-name>
+        <url-pattern>/DeleteGuardianServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchCaretakerServlet</servlet-name>

@@ -31,8 +31,8 @@
                     </select>
                 </div>
                 <div>
-                    <label for="contact">Contact</label>
-                    <input type="text" id="contact" name="contact">
+                    <label for="phone">Contact</label>
+                    <input type="text" id="phone" name="phone">
                 </div>
                 <div>
                     <label for="dateofbirth">Date of Birth</label>
