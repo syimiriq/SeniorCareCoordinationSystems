@@ -1,90 +1,74 @@
-<%-- 
-    Document   : caretakers
-    Created on : Jan 8, 2025, 10:24:40 AM
-    Author     : Ichiro
---%>
+<%@page import="com.scc.model.Caretakers"%>
+<%@page import="java.util.List"%>
 
-<%@page import="java.sql.*"%>
-<%@page import="com.scc.model.Admins"%>
+<%
+    if (session == null || session.getAttribute("Admin") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
 
+    // Fetch the list of caretakers
+    List<Caretakers> caretakersList = Caretakers.getAllCaretakers();
+%>
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Manage Caretakers</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-    
+
 <form>
     <button type="button" onclick="window.location.href='adminhome.jsp';">Back</button>
-</form>
+</form> 
 
-    <h1>Manage Caretakers</h1>
-    
-    <a href="addCaretaker.jsp">Add New Caretaker</a>
-    <a href="searchCaretaker.jsp">Search Caretaker</a>
-    
+<h1>Manage Caretakers</h1>
+
+<a href="addCaretaker.jsp">Add New Caretaker</a>
+<a href="searchCaretaker.jsp">Search Caretaker</a>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
     <%
-        if(session == null || session.getAttribute("Admin")==null) {
-            response.sendRedirect("login.jsp");
-            return;
-        }
-        else{ 
-            Admins admin = (Admins)session.getAttribute("Admin");
-        }               
-            
+        for (Caretakers caretaker : caretakersList) {
     %>
-    
-    
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Role</th>
-            <th>Status</th>
-        </tr>
-        
-        <%
-            Connection conn = null;
-            PreparedStatement stmt = null;
-            ResultSet rs = null;
-            
-            try {
-                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
-                String query = "SELECT * FROM CARETAKERS";
-                stmt = conn.prepareStatement(query);
-                rs = stmt.executeQuery();
-                
-                while (rs.next()) {    
-        %>
-        
-        <tr> 
-            <td><%= rs.getInt("ID") %></td>
-            <td><%= rs.getString("NAME") %></td>
-            <td><%= rs.getString("EMAIL") %></td>
-            <td><%= rs.getString("PHONE") %></td>
-            <td><%= rs.getString("ROLE") %></td>
-            <td><%= rs.getBoolean("STATUS") ? "Active" : "Inactive" %></td>
-            <td>
-                <a href="editCaretaker.jsp?id=<%= rs.getInt("ID") %>">Edit</a>
-                <a href="DeleteCaretakerServlet?id=<%= rs.getInt("ID") %>" onclick="return confirm('Are you sure you want to delete this caretaker?');">Delete</a>
-            </td>
-        </tr>
-        <%
-                }
-            } catch (SQLException e) {
-                out.println("Error retrieving caretaker records: " + e.getMessage());
-            } finally {
-                try {
-                    if (rs != null) rs.close();
-                    if (stmt != null) stmt.close();
-                    if (conn != null) conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        %>
-    </table>
-    
+    <tr>
+        <td><%= caretaker.getID() %></td>
+        <td><%= caretaker.getName() %></td>
+        <td><%= caretaker.getEmail() %></td>
+        <td><%= caretaker.getPhone() %></td>
+        <td><%= caretaker.getRole() %></td>
+        <td><%= caretaker.getStatus() ? "Active" : "Inactive" %></td>
+        <td>
+            <a href="editCaretaker.jsp?id=<%= caretaker.getID() %>">Edit</a>
+            <a href="DeleteCaretakerServlet?id=<%= caretaker.getID() %>" onclick="return confirm('Are you sure you want to delete this caretaker?');">Delete</a>
+        </td>
+    </tr>
+    <%
+        }
+    %>
+</table>
+
 </body>
 </html>

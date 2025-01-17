@@ -13,7 +13,6 @@ import java.sql.*;
 import java.util.*;
 import javax.servlet.http.HttpSession;
 
-
 public class SearchCaretakerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -51,10 +50,16 @@ public class SearchCaretakerServlet extends HttpServlet {
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
+                request.setAttribute("error", "An error occurred while searching for caretakers. Please try again.");
             }
+        } else {
+            request.setAttribute("error", "Search query cannot be empty.");
         }
 
+        // Set search results to the request
         request.setAttribute("results", results);
+
+        // Forward to JSP page
         request.getRequestDispatcher("searchCaretaker.jsp").forward(request, response);
     }
 }

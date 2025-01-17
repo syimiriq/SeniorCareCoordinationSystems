@@ -18,7 +18,7 @@
         <label for="caretaker">Caretaker</label>
         <input type="radio" id="caretaker" name="userType" value="caretaker" required><br><br>
         <label for="username">Username:</label>
-        <input type="text" name="username" required><br><br>
+        <input type="text" name="username" required><br>
         <label for="password">Password:</label>
         <input type="password" name="password" required><br><br>
         <button type="submit">Login</button>
@@ -34,6 +34,7 @@
            }
        %>
     </div>
+    
     <form action="register.jsp" method="get">
         <button type="submit">Register as a caretaker</button>
     </form>

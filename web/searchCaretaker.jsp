@@ -7,14 +7,13 @@
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
 
-
 <html>
 <head>
     <title>Search Caretakers</title>
 </head>
 <body>
     <form>
-        <button type="button" onclick="window.history.go(-1);">Back</button>
+        <button type="button" onclick="window.location.href='caretakers.jsp';">Back</button>
     </form>
     <h1>Search Caretakers</h1>
     
