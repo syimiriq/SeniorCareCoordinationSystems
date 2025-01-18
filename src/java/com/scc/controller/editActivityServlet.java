@@ -10,9 +10,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
-import javax.servlet.http.HttpSession;
 
+import javax.servlet.http.HttpSession;
+import com.scc.model.Activities;
 /**
  *
  * @author NITRO
@@ -35,29 +35,22 @@ public class editActivityServlet extends HttpServlet {
             String description = request.getParameter("description");
             String location = request.getParameter("location");
             
-            System.out.println("Activity ID: " + id);
-            System.out.println("Activity name: " + name);
-            System.out.println("Type: " + type);
-            System.out.println("Description: " + description);
-            System.out.println("Location: " + location); 
+            Activities activity = Activities.getActivityById(id);
+            if (activity == null) {
+                response.getWriter().println("Error: Activity not found.");
+                return;
+            }
             
-            
-            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
+            activity.setname(name);
+            activity.settype(type);
+            activity.setdescription(description);
+            activity.setlocation(location);
            
-
-
-            
-            // Corrected SQL query with commas between fields
-            String sql = "UPDATE ACTIVITIES SET NAME = ?, TYPE = ?, DESCRIPTION = ?, LOCATION = ? WHERE ID = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, name);
-            stmt.setString(2, type);
-            stmt.setString(3, description);
-            stmt.setString(4, location);
-            stmt.setInt(8, id); // Set the ID of the record to update
-            stmt.executeUpdate();
-            
-            conn.close();   
+            boolean success = activity.update();
+            if (!success) {
+                response.getWriter().println("Error: Failed to update activity.");
+                return;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             response.getWriter().println("Error: " + e.getMessage());

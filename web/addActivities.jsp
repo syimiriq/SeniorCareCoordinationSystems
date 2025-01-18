@@ -12,6 +12,7 @@
         <title>Create New Activities</title>
     </head>
     <body>
+        <button type="button" onclick="location.href='activities.jsp'">Back</button>
          <h1>Create New Activities</h1>
         <form action ="addActivityServlet" method ="post">
             <label >Activity Name :</label>

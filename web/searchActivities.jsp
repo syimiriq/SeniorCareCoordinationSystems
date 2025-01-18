@@ -13,6 +13,7 @@
     <title>Search Activities</title>
 </head>
 <body>
+    <button type="button" onclick="location.href='activities.jsp'">Back</button>
     <h1>Search Activities</h1>
     
     <%
