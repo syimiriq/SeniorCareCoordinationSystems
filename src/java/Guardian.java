@@ -5,7 +5,7 @@
 public class Guardian {
     private int ID;
     private String name;
-    private String phone;
+    private int phone;
     private String gender;
     private String address;
     private String dateofbirth;
@@ -13,7 +13,7 @@ public class Guardian {
     public Guardian() {
     }
 
-    public Guardian(int ID, String name, String phone, String gender, String address, String dateofbirth) {
+    public Guardian(int ID, String name, int phone, String gender, String address, String dateofbirth) {
         this.ID = ID;
         this.name = name;
         this.phone = phone;
@@ -30,7 +30,7 @@ public class Guardian {
         return name;
     }
 
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
 
@@ -54,7 +54,7 @@ public class Guardian {
         this.name = name;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 

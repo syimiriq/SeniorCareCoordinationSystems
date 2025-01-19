@@ -3,17 +3,41 @@
     Created on : Jan 12, 2025, 1:47:24 AM
     Author     : NITRO
 --%>
-<%@page import="java.sql.*"%>
+<%@page import="java.util.List"%>
 <%@page import="com.scc.model.Activities"%>
+<%
+    /*if (session == null || session.getAttribute("Admin") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }*/
+
+    // Fetch the list of caretakers
+    List<Activities> activitiesList = Activities.getAllActivities();
+%>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manage Activities</title>
+       <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
     </head>
     <body>
+        <button type="button" onclick="location.href=''">Back</button>
         <h1>Manage Activities</h1>
-        <a href="searchActivities.jsp" src="">Search Activities</a>
-        <table border="1">
+        <button type="button" onclick="location.href='addActivities.jsp'">Add New Activities</button>
+        <button type="button" onclick="location.href='searchActivities.jsp'">Search Activities</button>
+        <br>
+        <table>
         <tr>
             <th>Activities ID</th>
             <th>Activities Name</th>
@@ -22,47 +46,25 @@
             <th>Location</th>
         </tr>
         <% 
-            
-            Connection conn = null;
-            PreparedStatement stmt = null;
-            ResultSet rs = null;
-            
-            try {
-                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
-                String query = "SELECT * FROM ACTIVITIES";
-                stmt = conn.prepareStatement(query);
-                rs = stmt.executeQuery();
-                
-                while (rs.next()) {    
-      
-           
+            for (Activities activity : activitiesList){
+
         %>
         <tr>
-            <td><%= rs.getInt("ID") %></td>
-            <td><%= rs.getString("NAME") %></td>
-            <td><%= rs.getString("TYPE") %></td>
-            <td><%= rs.getString("DESCRIPTION") %></td>
-            <td><%= rs.getString("LOCATION") %></td>
-            <td>
-                <a href="editActivities.jsp?id=<%= rs.getInt("ID") %>">Edit</a>
-                <a href="deleteActivities.jsp?id=<%= rs.getInt("ID") %>">Delete</a>
+        <td><%= activity.getid() %></td>
+        <td><%= activity.getname() %></td>
+        <td><%= activity.gettype() %></td>
+        <td><%= activity.getdescription() %></td>
+        <td><%= activity.getlocation() %></td>
+        <td>
+                <a href="editActivities.jsp?id=<%= activity.getid() %>">Edit</a>
+                 <a href="deleteActivityServlet?id=<%= activity.getid() %>" onclick="return confirm('Are you sure you want to delete this caretaker?');">Delete</a>
             </td>
         </tr>
-        <%
-                }
-            } catch (SQLException e) {
-                out.println("Error retrieving activity records: " + e.getMessage());
-            } finally {
-                try {
-                    if (rs != null) rs.close();
-                    if (stmt != null) stmt.close();
-                    if (conn != null) conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+        
+       /<%
+              }
         %>
         </table>
-        <button type="button" onclick="location.href='addActivities.jsp'">Add New Acitivites</button>
+        
     </body>
 </html>

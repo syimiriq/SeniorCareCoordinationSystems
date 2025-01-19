@@ -8,13 +8,11 @@
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 
 <%
-    // Ensure the user is logged in
     if (session == null || session.getAttribute("Caretaker") == null) {
         response.sendRedirect("login.jsp");
         return;
     }
 
-    // Validate and retrieve guardian ID from request
     String guardianIdParam = request.getParameter("id");
     if (guardianIdParam == null || !guardianIdParam.matches("\\d+")) {
         out.println("<p style='color:red;'>Invalid guardian ID.</p>");
@@ -23,7 +21,6 @@
 
     int guardianId = Integer.parseInt(guardianIdParam);
 
-    // Fetch the guardian details using the ID
     Guardians guardian = Guardians.getGuardianById(guardianId);
     if (guardian == null) {
         out.println("<p style='color:red;'>No guardian found for the provided ID.</p>");
@@ -60,7 +57,7 @@
         <input type="text" name="phone" id="phone" value="<%= guardian.getPhone() %>" required><br>
 
         <label for="dateofbirth">Date of Birth:</label>
-        <input type="date" name="dateofbirth" id="dateofbirth" value="<%= guardian.getDateOfBirth() %>" required><br>
+        <input type="date" name="dateofbirth" id="dateofbirth" value="<%= guardian.getDateofbirth() %>" required><br>
 
         <label for="address">Address:</label>
         <textarea name="address" id="address" rows="2" required><%= guardian.getAddress() %></textarea><br>

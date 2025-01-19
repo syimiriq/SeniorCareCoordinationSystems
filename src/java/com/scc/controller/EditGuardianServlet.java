@@ -1,88 +1,75 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.scc.controller;
 
+import com.scc.model.Guardians;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author user
- */
-@WebServlet(name = "EditGuardianServlet_1", urlPatterns = {"/EditGuardianServlet_1"})
+@WebServlet("/EditGuardianServlet")
 public class EditGuardianServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditGuardianServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditGuardianServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get the form parameters
+        String idParam = request.getParameter("id");
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String phoneParam = request.getParameter("phone");
+        String dateOfBirth = request.getParameter("dateofbirth");
+        String address = request.getParameter("address");
+
+        // Validate and parse the parameters
+        if (idParam == null || !idParam.matches("\\d+")) {
+            response.sendRedirect("editGuardian.jsp?error=Invalid ID");
+            return;
+        }
+
+        int id = Integer.parseInt(idParam);
+
+        if (phoneParam == null || !phoneParam.matches("\\d{10,15}")) {
+            response.sendRedirect("editGuardian.jsp?error=Invalid phone number");
+            return;
+        }
+
+        int phone = Integer.parseInt(phoneParam);
+
+        if (name == null || name.trim().isEmpty() ||
+            gender == null || (!gender.equalsIgnoreCase("male") && !gender.equalsIgnoreCase("female")) ||
+            dateOfBirth == null || dateOfBirth.trim().isEmpty() ||
+            address == null || address.trim().isEmpty()) {
+            response.sendRedirect("editGuardian.jsp?error=Missing or invalid fields");
+            return;
+        }
+
+        // Fetch the existing guardian
+        Guardians guardian = Guardians.getGuardianById(id);
+        if (guardian == null) {
+            response.sendRedirect("editGuardian.jsp?error=Guardian not found");
+            return;
+        }
+
+        // Update the guardian details
+        guardian.setName(name);
+        guardian.setGender(gender);
+        guardian.setPhone(phone);
+        guardian.setDateofbirth(dateOfBirth);
+        guardian.setAddress(address);
+
+        // Save the changes to the database
+        boolean updateSuccess = guardian.update();
+
+        if (updateSuccess) {
+            response.sendRedirect("guardian.jsp?success=Guardian updated successfully");
+        } else {
+            response.sendRedirect("editGuardian.jsp?error=Failed to update guardian");
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("editGuardian.jsp");
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
