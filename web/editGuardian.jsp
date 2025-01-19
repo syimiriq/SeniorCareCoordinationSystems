@@ -3,7 +3,7 @@
     Created on : Jan 18, 2025, 2:30:36 AM
     Author     : user
 --%>
-<!--tukar ni-->
+
 <%@page import="com.scc.model.Guardians"%>
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 
@@ -14,15 +14,16 @@
     }
 
     String guardianIdParam = request.getParameter("id");
-    if (guardianIdParam == null || !guardianIdParam.matches("\\d+")) {
+    if (guardianIdParam == null) {
         out.println("<p style='color:red;'>Invalid guardian ID.</p>");
-        return;
+        
     }
 
     int guardianId = Integer.parseInt(guardianIdParam);
 
     Guardians guardian = Guardians.getGuardianById(guardianId);
     if (guardian == null) {
+        out.println(guardian);
         out.println("<p style='color:red;'>No guardian found for the provided ID.</p>");
         return;
     }
@@ -41,7 +42,7 @@
     <h1>Edit Guardian</h1>
     <form action="EditGuardianServlet" method="post">
         <!-- Hidden field to pass guardian ID -->
-        <input type="hidden" name="id" value="<%= guardian.getID() %>">
+        <input type="hidden" name="ID" value="<%= guardian.getGuardianID() %>">
 
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" value="<%= guardian.getName() %>" required><br>
@@ -56,8 +57,8 @@
         <label for="phone">Contact:</label>
         <input type="text" name="phone" id="phone" value="<%= guardian.getPhone() %>" required><br>
 
-        <label for="dateofbirth">Date of Birth:</label>
-        <input type="date" name="dateofbirth" id="dateofbirth" value="<%= guardian.getDateofbirth() %>" required><br>
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" name="dateOfBirth" id="dateOfBirth" value="<%= guardian.getDateOfBirth() %>" required><br>
 
         <label for="address">Address:</label>
         <textarea name="address" id="address" rows="2" required><%= guardian.getAddress() %></textarea><br>

@@ -51,7 +51,7 @@
 
     try {
         conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
-        String query = "SELECT * FROM GUARDIANS";
+        String query = "SELECT * FROM guardians";
         stmt = conn.prepareStatement(query);
         rs = stmt.executeQuery();
 

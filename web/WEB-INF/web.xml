@@ -17,6 +17,10 @@
         <servlet-class>com.scc.controller.EditCaretakerServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EditGuardianServlet</servlet-name>
+        <servlet-class>com.scc.controller.EditGuardianServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>EditSeniorServlet</servlet-name>
         <servlet-class>com.scc.controller.EditSeniorServlet</servlet-class>
     </servlet>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>EditSeniorServlet</servlet-name>
         <url-pattern>/EditSeniorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditGuardianServlet</servlet-name>
+        <url-pattern>/EditGuardianServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteCaretakerServlet</servlet-name>

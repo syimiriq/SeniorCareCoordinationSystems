@@ -7,12 +7,12 @@ import java.util.List;
 public class Guardians implements java.io.Serializable {
     private int ID;
     private String name;
-    private int phone;
+    private String phone;
     private String gender;
     private String address;
     private String dateOfBirth;
 
-    public Guardians(int ID, String name, int phone, String gender, String address, String dateOfBirth) {
+    public Guardians(int ID, String name, String phone, String gender, String address, String dateOfBirth) {
         this.ID = ID;
         this.name = name;
         this.phone = phone;
@@ -29,7 +29,7 @@ public class Guardians implements java.io.Serializable {
         return name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -53,7 +53,7 @@ public class Guardians implements java.io.Serializable {
         this.name = name;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -73,14 +73,14 @@ public class Guardians implements java.io.Serializable {
     public static Guardians getGuardianById(int id) {
         Guardians guardian = null;
         try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM GUARDIANS WHERE ID = ?")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM guardians WHERE id = ?")) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     guardian = new Guardians(
                             rs.getInt("ID"),
                             rs.getString("NAME"),
-                            rs.getInt("PHONE"),
+                            rs.getString("PHONE"),
                             rs.getString("GENDER"),
                             rs.getString("ADDRESS"),
                             rs.getString("DATEOFBIRTH")
@@ -99,7 +99,7 @@ public class Guardians implements java.io.Serializable {
              PreparedStatement stmt = conn.prepareStatement(
                      "UPDATE GUARDIANS SET NAME = ?, PHONE = ?, GENDER = ?, ADDRESS = ?, DATEOFBIRTH = ? WHERE ID = ?")) {
             stmt.setString(1, name);
-            stmt.setInt(2, phone);
+            stmt.setString(2, phone);
             stmt.setString(3, gender);
             stmt.setString(4, address);
             stmt.setString(5, dateOfBirth);
@@ -123,7 +123,7 @@ public class Guardians implements java.io.Serializable {
                 Guardians guardian = new Guardians(
                         rs.getInt("ID"),
                         rs.getString("NAME"),
-                        rs.getInt("PHONE"), // Fix: PHONE is an int
+                        rs.getString("PHONE"), // Fix: PHONE is an int
                         rs.getString("GENDER"),
                         rs.getString("ADDRESS"),
                         rs.getString("DATEOFBIRTH")
