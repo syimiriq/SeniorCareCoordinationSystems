@@ -14,15 +14,17 @@
     }*/
 
     String activityIdParam = request.getParameter("id");
-    if (activityIdParam == null || !activityIdParam.matches("\\d+")) {
+    if (activityIdParam == null) {
         out.println("<p style='color:red;'>Invalid caretaker ID.</p>");
         return;
     }
 
+    
     int activityid = Integer.parseInt(activityIdParam);
     Activities activity = Activities.getActivityById(activityid);
 
     if (activity == null) {
+        out.println(activity);
         out.println("<p style='color:red;'>No activity found for the provided ID.</p>");
         return;
     }

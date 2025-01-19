@@ -35,7 +35,7 @@ public class Activities implements java.io.Serializable{
     public static Activities getActivityById(int id) {
         Activities activity = null;
         try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ACTIVITIES WHERE ID = ?")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM activities WHERE id = ?")) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -43,7 +43,7 @@ public class Activities implements java.io.Serializable{
                         rs.getInt("ID"),
                         rs.getString("NAME"),
                         rs.getString("TYPE"),
-                        rs.getString("DESCRITPION"),
+                        rs.getString("DESCRIPTION"),
                         rs.getString("LOCATION")
                     );
                 }

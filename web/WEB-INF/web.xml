@@ -21,10 +21,6 @@
         <servlet-class>com.scc.controller.EditSeniorServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditGuardianServlet</servlet-name>
-        <servlet-class>com.scc.controller.EditGuardianServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>deleteActivityServlet</servlet-name>
         <servlet-class>com.scc.controller.deleteActivityServlet</servlet-class>
     </servlet>
@@ -111,10 +107,6 @@
     <servlet-mapping>
         <servlet-name>EditCaretakerServlet</servlet-name>
         <url-pattern>/EditCaretakerServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditGuardianServlet</servlet-name>
-        <url-pattern>/EditGuardianServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EditSeniorServlet</servlet-name>
