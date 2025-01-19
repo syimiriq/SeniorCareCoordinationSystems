@@ -57,6 +57,14 @@
         <servlet-class>com.scc.controller.SearchCaretakerServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SearchSeniorServlet</servlet-name>
+        <servlet-class>com.scc.controller.SearchSeniorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchGuardianServlet</servlet-name>
+        <servlet-class>com.scc.controller.SearchGuardianServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SearchActivitiesServlet</servlet-name>
         <servlet-class>com.scc.controller.SearchActivitiesServlet</servlet-class>
     </servlet>
@@ -135,6 +143,14 @@
     <servlet-mapping>
         <servlet-name>SearchCaretakerServlet</servlet-name>
         <url-pattern>/SearchCaretakerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchGuardianServlet</servlet-name>
+        <url-pattern>/SearchGuardianServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchSeniorServlet</servlet-name>
+        <url-pattern>/SearchSeniorServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SearchActivitiesServlet</servlet-name>

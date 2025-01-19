@@ -5,14 +5,15 @@
         <group>
             <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/model/Guardians.java</file>
             <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/EditCaretakerServlet.java</file>
-            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/editSenior.jsp</file>
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/searchSenior.jsp</file>
             <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/EditGuardianServlet.java</file>
             <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/home.jsp</file>
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/SearchGuardianServlet.java</file>
             <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/editGuardian.jsp</file>
             <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/web/guardian.jsp</file>
-            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/EditSeniorServlet.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/SearchSeniorServlet.java</file>
             <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/model/Seniors.java</file>
+            <file>file:/C:/Users/user/Documents/GitHub/SeniorCareCoordinationSystems/src/java/com/scc/controller/EditSeniorServlet.java</file>
         </group>
     </open-files>
 </project-private>
