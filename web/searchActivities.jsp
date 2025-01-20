@@ -15,7 +15,19 @@
 <body>
     <button type="button" onclick="location.href='activities.jsp'">Back</button>
     <h1>Search Activities</h1>
-    
+     <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
     <%
         String error = request.getParameter("error");
         if (error != null) {
@@ -38,7 +50,7 @@
         if (searchResults != null && !searchResults.isEmpty()) {
     %>
     <h2>Search Results</h2>
-    <table border="1">
+    <table>
         <tr>
             <th>ID</th>
             <th>Name</th>

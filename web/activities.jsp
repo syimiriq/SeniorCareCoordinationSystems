@@ -6,16 +6,17 @@
 <%@page import="java.util.List"%>
 <%@page import="com.scc.model.Activities"%>
 <%
-    /*if (session == null || session.getAttribute("Admin") == null) {
+    if (session == null || session.getAttribute("Admin") == null) {
         response.sendRedirect("login.jsp");
         return;
-    }*/
+    }
 
-    // Fetch the list of caretakers
+    // Fetch the list of activities
     List<Activities> activitiesList = Activities.getAllActivities();
 %>
 <html>
     <head>
+        
         <title>Manage Activities</title>
        <style>
         table {
@@ -32,7 +33,7 @@
     </style>
     </head>
     <body>
-        <button type="button" onclick="location.href=''">Back</button>
+        <button type="button" onclick="location.href='adminhome.jsp'">Back</button>
         <h1>Manage Activities</h1>
         <button type="button" onclick="location.href='addActivities.jsp'">Add New Activities</button>
         <button type="button" onclick="location.href='searchActivities.jsp'">Search Activities</button>
@@ -60,8 +61,7 @@
                  <a href="deleteActivityServlet?id=<%= activity.getid() %>" onclick="return confirm('Are you sure you want to delete this caretaker?');">Delete</a>
             </td>
         </tr>
-        
-       /<%
+        <%
               }
         %>
         </table>

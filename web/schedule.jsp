@@ -4,16 +4,41 @@
     Author     : NITRO
 --%>
 
-<%@page import="java.sql.*"%>
-<%@page import="com.scc.model.Activities"%>
-<!DOCTYPE html>
+<%@page import="java.util.List"%>
+<%@page import="com.scc.model.Schedules"%>
+<%
+    /*if (session == null || session.getAttribute("Admin") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }*/
+
+    // Fetch the list of schedules
+    List<Schedules> schedulesList = Schedules.getAllSchedules();
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Schedule</title>
+        <title>Manage Schedule</title>
+        <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
     </head>
     <body>
-        <table border="1">
+        <button type="button" onclick="location.href='adminhome.jsp'">Back</button>
+        <h1>Manage Schedules</h1>
+        <button type="button" onclick="location.href='addSchedules.jsp'">Add New Schedules</button>
+        <button type="button" onclick="location.href='searchSchedules.jsp'">Search Schedules</button>
+        <br>
         <tr>
             <th>Activities ID</th>
             <th>Senior ID</th>
@@ -24,36 +49,25 @@
             <th>Caretaker ID</th>
         </tr>
         <% 
-            
-            Connection conn = null;
-            PreparedStatement stmt = null;
-            ResultSet rs = null;
-            
-            try {
-                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc");
-                String query = "SELECT * FROM SCHEDULES";
-                stmt = conn.prepareStatement(query);
-                rs = stmt.executeQuery();
-                
-                while (rs.next()) {    
-      
-           
+            for (Schedules schedule : schedulesList){
+
         %>
+        <tr>
+        <td><%= schedule.getActivityid() %></td>
+        <td><%= schedule.getSeniorid() %></td>
+        <td><%= schedule.getStart_time() %></td>
+        <td><%= schedule.getEnd_time() %></td>
+        <td><%= schedule.getDate() %></td>
+        <td><%= schedule.getStatus()? "Active" : "Inactive" %></td>
+        <td><%= schedule.getCaretakerid() %></td>
+        <td>
+                <a href="editSchedules.jsp?id=<%= schedule.getActivityid() %>">Edit</a>
+                <a href="deleteActivityServlet?id=<%= schedule.getActivityid() %>" onclick="return confirm('Are you sure you want to delete this caretaker?');">Delete</a>
+            </td>
+        </tr>
         <%
-                }
-            } catch (SQLException e) {
-                out.println("Error retrieving schedule records: " + e.getMessage());
-            } finally {
-                try {
-                    if (rs != null) rs.close();
-                    if (stmt != null) stmt.close();
-                    if (conn != null) conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+              }
         %>
         </table>
-        <button type="button" onclick="location.href='addSchedule.jsp'">Add New Schedule</button>
     </body>
 </html>

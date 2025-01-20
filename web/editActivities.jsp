@@ -8,10 +8,10 @@
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 
 <%
-    /*if (session == null || session.getAttribute("Admin") == null) {
+    if (session == null || session.getAttribute("Admin") == null) {
         response.sendRedirect("login.jsp");
         return;
-    }*/
+    }
 
     String activityIdParam = request.getParameter("id");
     if (activityIdParam == null) {
