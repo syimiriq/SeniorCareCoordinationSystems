@@ -1,7 +1,7 @@
 <%-- 
-    Document   : searchSenior
-    Created on : Jan 20, 2025, 1:39:55 AM
-    Author     : user
+    Document   : searchGuardian
+    Created on : Jan 20, 2025, 9:13:55 AM
+    Author     : User
 --%>
 
 <%@page import="java.util.*"%>
@@ -13,7 +13,7 @@
 </head>
 <body>
     <form>
-        <button type="button" onclick="window.location.href='senior.jsp';">Back</button>
+        <button type="button" onclick="window.location.href='guardian.jsp';">Back</button>
     </form>
     <h1>Search Caretakers</h1>
     
@@ -43,18 +43,24 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Phone</th>
             <th>Gender</th>
             <th>Date of Birth</th>
-            <th>Guardian ID</th>
+            <th>Address</th>
+            
+            
            
         </tr>
         <% for (Map<String, Object> senior : searchResults) { %>
         <tr>
             <td><%= senior.get("ID") %></td>
             <td><%= senior.get("NAME") %></td>
+            <td><%= senior.get("PHONE") %></td>
             <td><%= senior.get("GENDER") %></td>
             <td><%= senior.get("DATEOFBIRTH") %></td>
-            <td><%= senior.get("GUARDIANID") %></td>
+            <td><%= senior.get("ADDRESS") %></td>
+            
+            
 
         </tr>
         <% } %>
