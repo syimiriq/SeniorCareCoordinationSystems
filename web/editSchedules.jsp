@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="com.scc.model.Schedules"%>
+<%@page import="com.scc.model.Activities"%>
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 
 <%
@@ -15,13 +16,14 @@
 
     String activityIdParam = request.getParameter("id");
     if (activityIdParam == null) {
-        out.println("<p style='color:red;'>Invalid caretaker ID.</p>");
+        out.println("<p style='color:red;'>Invalid activity ID.</p>");
         return;
     }
 
     
     int activityid = Integer.parseInt(activityIdParam);
     Schedules schedule = Schedules.getScheduleById(activityid);
+    
 
     if (schedule == null) {
         out.println(schedule);
@@ -33,13 +35,13 @@
 <html>
     <head>
         
-        <title>Edit Activity</title>
+        <title>Edit Schedule</title>
     </head>
     <body>
-        <button type="button" onclick="location.href='activities.jsp'">Back</button>
-       <h1>Edit Activity</h1>
-    <form action="editActivityServlet" method="post">
-        <input type="hidden" name="id" value="<%= schedule.getActivityid() %>">
+        <button type="button" onclick="location.href='schedule.jsp'">Back</button>
+       <h1>Edit Schedule</h1>
+    <form action="editScheduleServlet" method="post">
+        <input type="hidden" name="id" value="<%= activity.getid() %>">
         <input type="hidden" name="id" value="<%= schedule.getSeniorid() %>">
 
         <label for="name">Start:</label>
