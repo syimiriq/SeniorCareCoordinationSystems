@@ -39,7 +39,7 @@
 
 <a href="addCaretaker.jsp">Add New Caretaker</a>
 <a href="searchCaretaker.jsp">Search Caretaker</a>
-
+<%= caretakersList %>
 <table>
     <tr>
         <th>ID</th>

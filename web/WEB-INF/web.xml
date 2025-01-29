@@ -156,6 +156,23 @@
         <servlet-name>SearchActivitiesServlet</servlet-name>
         <url-pattern>/SearchActivitiesServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AddMedicalReportServlet</servlet-name>
+            <servlet-class>com.scc.controller.AddMedicalReportServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteMedicalReportServlet</servlet-name>
+        <servlet-class>com.scc.controller.DeleteMedicalReportServlet</servlet-class>
+    </servlet>
+          <servlet-mapping>
+        <servlet-name>AddMedicalReportServlet</servlet-name>
+        <url-pattern>/AddMedicalReportServlet</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>DeleteMedicalReportServlet</servlet-name>
+        <url-pattern>/DeleteMedicalReportServlet</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

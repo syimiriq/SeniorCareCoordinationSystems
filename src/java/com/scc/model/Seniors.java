@@ -1,5 +1,6 @@
 package com.scc.model;
 
+import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,4 +112,21 @@ public class Seniors implements java.io.Serializable {
         }
         return seniorsList;
     }
+    
+    public boolean takenMedicalReport(int id){
+
+        try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MEDICALS WHERE SENIORID= ? AND DATE(DATETIME) = CURRENT_DATE")) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }
