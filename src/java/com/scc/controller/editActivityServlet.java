@@ -10,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import javax.servlet.http.HttpSession;
 import com.scc.model.Activities;
 /**
@@ -22,12 +21,11 @@ public class editActivityServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        /*HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(false);
         if(session == null || session.getAttribute("Admin")== null) {
             response.sendRedirect("login.jsp");
             return;
-        }*/
-        
+        }
         try {
             int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
@@ -41,10 +39,10 @@ public class editActivityServlet extends HttpServlet {
                 return;
             }
             
-            activity.setname(name);
-            activity.settype(type);
-            activity.setdescription(description);
-            activity.setlocation(location);
+            activity.setName(name);
+            activity.setType(type);
+            activity.setDescription(description);
+            activity.setLocation(location);
            
             boolean success = activity.update();
             if (!success) {
@@ -57,6 +55,6 @@ public class editActivityServlet extends HttpServlet {
             return;
         }
 
-        response.sendRedirect("activity.jsp");
+        response.sendRedirect("activities.jsp");
     }
 }

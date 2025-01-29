@@ -33,6 +33,8 @@
     <a href="senior.jsp">Manage Senior</a>
     <a href="guardian.jsp">Manage Guardian</a>
     <a href="medicalReport.jsp">Take Medical Report for today</a>
+    <a href="activities.jsp">Manage Activity</a>
+    <a href="schedule.jsp">Manage Schedule</a>
     
 
         <form action="LogoutServlet" method="get">

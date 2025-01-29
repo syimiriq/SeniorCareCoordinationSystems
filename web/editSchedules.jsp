@@ -5,7 +5,6 @@
 --%>
 
 <%@page import="com.scc.model.Schedules"%>
-<%@page import="com.scc.model.Activities"%>
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 
 <%
@@ -14,15 +13,19 @@
         return;
     }
 
-    String activityIdParam = request.getParameter("id");
-    if (activityIdParam == null) {
+    String activityIdParam = request.getParameter("activityid");
+    String seniorIdParam = request.getParameter("seniorid");
+    String caretakerIdParam = request.getParameter("caretakerid");
+    if (activityIdParam == null || seniorIdParam == null || caretakerIdParam == null) {
         out.println("<p style='color:red;'>Invalid activity ID.</p>");
         return;
     }
 
     
     int activityid = Integer.parseInt(activityIdParam);
-    Schedules schedule = Schedules.getScheduleById(activityid);
+    int seniorid = Integer.parseInt(seniorIdParam);
+    int caretakerid = Integer.parseInt(caretakerIdParam);
+    Schedules schedule = Schedules.getScheduleById(activityid, seniorid, caretakerid);
     
 
     if (schedule == null) {
@@ -41,17 +44,17 @@
         <button type="button" onclick="location.href='schedule.jsp'">Back</button>
        <h1>Edit Schedule</h1>
     <form action="editScheduleServlet" method="post">
-        <input type="hidden" name="id" value="<%= activity.getid() %>">
-        <input type="hidden" name="id" value="<%= schedule.getSeniorid() %>">
+        <input type="hidden" name="activityid" value="<%= schedule.getActivityid() %>">
+        <input type="hidden" name="seniorid" value="<%= schedule.getSeniorid() %>">
 
-        <label for="name">Start:</label>
-        <input type="text" name="name" value="<%= schedule.getStart_time() %>" required><br>
+        <label for="start_time">Start:</label>
+        <input type="text" name="start_time" value="<%= schedule.getStart_time() %>" required><br>
 
-        <label for="email">End:</label>
-        <input type="email" name="email" value="<%= schedule.getEnd_time() %>" required><br>
+        <label for="end_time">End:</label>
+        <input type="email" name="end_time" value="<%= schedule.getEnd_time() %>" required><br>
 
-        <label for="username">Date:</label>
-        <input type="date" name="username" value="<%= schedule.getDate() %>" required><br>
+        <label for="date">Date:</label>
+        <input type="date" name="date" value="<%= schedule.getDate() %>" required><br>
 
         <label for="phone">Status:</label>
         <select name="status">

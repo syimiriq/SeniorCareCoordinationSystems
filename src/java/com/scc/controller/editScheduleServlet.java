@@ -21,29 +21,29 @@ public class editScheduleServlet extends HttpServlet {
             response.sendRedirect("login.jsp");
             return;
         }
-//
-//        try {
-//            // Retrieve input parameters from the request
-//            int aID = Integer.parseInt(request.getParameter("activityid"));
-//            int sID = Integer.parseInt(request.getParameter("seniorid"));
-//            String start_time = request.getParameter("start_name");
-//            String end_time = request.getParameter("end_time");
-//            String date = request.getParameter("date");
-//            boolean status = Boolean.parseBoolean(request.getParameter("status"));
-//            int cID = Integer.parseInt(request.getParameter("caretakerid"));
+
+        try {
+            // Retrieve input parameters from the request
+            int activityid = Integer.parseInt(request.getParameter("activityid"));
+            int seniorid = Integer.parseInt(request.getParameter("seniorid"));
+            String start_time = request.getParameter("start_name");
+            String end_time = request.getParameter("end_time");
+            String date = request.getParameter("date");
+            boolean status = Boolean.parseBoolean(request.getParameter("status"));
+            int caretakerid = Integer.parseInt(request.getParameter("caretakerid"));
 
             // Load the caretaker data using the ID
-          //  Schedules schedule = Schedules.getScheduleById(sID);
-//            if (schedule == null) {
-//                response.getWriter().println("Error: activity not found.");
-//                return;
-//            }
-//
-//            // Update the caretaker's properties
-//            schedule.setStart_time(start_time);
-//            schedule.setEnd_time(end_time);
-//            schedule.setDate(date);
-//            schedule.setStatus(status);
+            Schedules schedule = Schedules.getScheduleById(activityid, seniorid, caretakerid);
+            if (schedule == null) {
+                response.getWriter().println("Error: activity not found.");
+                return;
+            }
+
+            // Update the caretaker's properties
+            schedule.setStart_time(start_time);
+            schedule.setEnd_time(end_time);
+            schedule.setDate(date);
+            schedule.setStatus(status);
 
        
 //
