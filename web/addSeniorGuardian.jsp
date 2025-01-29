@@ -15,92 +15,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senior & Guardian Information</title>
     <style>
-/*        body {
+        body {
             font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 0;
+            margin: 20px;
+            background-color: #f4f4f4;
         }
         .container {
-            width: 80%;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
             border-radius: 10px;
-        }*/
-        h2 {
-            text-align: center;
-            color: #2c3e50;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
         }
-/*        form {
+        .header {
+            text-align: center;
             margin-bottom: 20px;
         }
-        form section {
-            margin-bottom: 30px;
+        .header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            color: #333;
         }
-        form div {
-            margin: 10px 0;
+        .info-section {
+            margin-bottom: 20px;
         }
-        form label {
-            display: block;
-            margin-bottom: 5px;
+        .info-section h3{
+            font-size: 1.4em;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .info-item {
+            margin-bottom: 10px;
+        }
+        .info-item label {
             font-weight: bold;
+            display: inline-block;
+            width: 120px;
+            color: #333;
         }
-        form input, form select, form textarea {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }*/
-/*        button {
-            background-color: #5dade2;
-            color: white;
+        .edit-btn {
+            display: inline-block;
+            margin-top: 10px;
             padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-        }*/
-        button:hover {
-            background-color: #2874a6;
+        }
+        .edit-btn:hover {
+            background-color: #45a049;
         }
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table th, table td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        table th {
-            background-color: #f4f6f9;
-        }
-        .actions button {
-            margin-right: 5px;
-        }
-    </style>
+               width: 100%;
+               border-collapse: collapse;
+           }
+           table, th, td {
+               border: 1px solid black;
+           }
+           th, td {
+               padding: 8px;
+               text-align: center;
+           }
+        </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Senior & Guardian Information</h2>
-        
-<form>
-  <button type="button" onclick="window.history.go(-1);">Back</button>
+    <form>
+  <button class="edit-btn" type="button" onclick="window.history.go(-1);">Back</button>
 </form>
+    <div class="container">
+        <div class="header">
+        <h1>Senior & Guardian Information</h1>
+        </div>
+
         
         <form action="addSeniorGuardianServlet" method="post">
             <!-- Senior Details -->
-            <section>
+                <div class="info-section">
                 <h3>Senior Details</h3>
-                <div>
+                <br>
+                <div class="info-item">
                     <label for="seniorName">Name</label>
                     <input type="text" id="seniorName" name="seniorName" required>
                 </div>
-                <div>
+                <div class="info-item">
                     <label for="seniorGender">Gender</label>
                     <select id="seniorGender" name="seniorGender" required>
                         <option value="male">Male</option>
@@ -108,20 +109,22 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-                <div>
+                <div class="info-item">
                     <label for="seniorDob">Date of Birth</label>
                     <input type="date" id="seniorDob" name="seniorDob" required>
                 </div>
-            </section>
+                <br>
+                </div>
 
             <!-- Guardian Details (Optional) -->
-            <section>
+                <div class="info-section">
                 <h3>Guardian Details (Optional)</h3>
-                <div>
+                <br>
+                <div class="info-item">
                     <label for="guardianName">Name</label>
                     <input type="text" id="guardianName" name="guardianName">
                 </div>
-                <div>
+                <div class="info-item">
                     <label for="guardianGender">Gender</label>
                     <select id="guardianGender" name="guardianGender">
                         <option value="">Select</option>
@@ -130,11 +133,11 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-                <div>
+                <div class="info-item">
                     <label for="guardianContact">Contact</label>
                     <input type="text" id="guardianContact" name="guardianContact">
                 </div>
-                <div>
+                <div class="info-item">
                     <label for="relationship">Relationship</label>
                     <select id="relationship" name="relationship">
                         <option value="">Select</option>
@@ -145,24 +148,26 @@
                         <option value="friend">Guardian</option>
                     </select>
                 </div>
-                <div>
+                <div class="info-item">
                     <label for="guardianDob">Date of Birth</label>
                     <input type="date" id="guardianDob" name="guardianDob">
                 </div>
-                <div>
+                <div class="info-item">
                     <label for="guardianAddress">Address</label>
                     <textarea id="guardianAddress" name="guardianAddress" rows="3"></textarea>
                 </div>
-            </section>
+                </div>
+            
             <br>
-            <button type="submit">Submit</button>
+            <button class="edit-btn" type="submit">Submit</button>
         </form>
     </div>
 </body>
 </html>
+<br>
         
         <!-- Table to Display Existing Records -->
-        <table border="1">
+        <table >
         <tr>
             <th>Name</th>
             <th>Gender</th>
