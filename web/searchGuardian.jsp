@@ -9,13 +9,13 @@
 
 <html>
 <head>
-    <title>Search Caretakers</title>
+    <title>Search Guardian</title>
 </head>
 <body>
     <form>
         <button type="button" onclick="window.location.href='guardian.jsp';">Back</button>
     </form>
-    <h1>Search Caretakers</h1>
+    <h1>Search Guardians</h1>
     
     <%
         String error = request.getParameter("error");
@@ -26,7 +26,7 @@
         }
     %>
     
-    <form action="SearchSeniorServlet" method="get">
+    <form action="SearchGuardianServlet" method="get">
         <label for="searchField">Search by Name:</label>
         <input type="text" name="query" id="searchField" required>
         <button type="submit">Search</button>
@@ -48,8 +48,6 @@
             <th>Date of Birth</th>
             <th>Address</th>
             
-            
-           
         </tr>
         <% for (Map<String, Object> senior : searchResults) { %>
         <tr>
@@ -59,9 +57,7 @@
             <td><%= senior.get("GENDER") %></td>
             <td><%= senior.get("DATEOFBIRTH") %></td>
             <td><%= senior.get("ADDRESS") %></td>
-            
-            
-
+          
         </tr>
         <% } %>
     </table>

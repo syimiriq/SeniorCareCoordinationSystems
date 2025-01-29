@@ -57,6 +57,6 @@ public class SearchSeniorServlet extends HttpServlet {
         request.setAttribute("results", results);
 
         // Forward to JSP page
-        request.getRequestDispatcher("searchGuardian.jsp").forward(request, response);
+        request.getRequestDispatcher("searchSenior.jsp").forward(request, response);
     }
 }

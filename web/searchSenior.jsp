@@ -9,13 +9,13 @@
 
 <html>
 <head>
-    <title>Search Caretakers</title>
+    <title>Search Senior</title>
 </head>
 <body>
     <form>
         <button type="button" onclick="window.location.href='senior.jsp';">Back</button>
     </form>
-    <h1>Search Caretakers</h1>
+    <h1>Search Senior</h1>
     
     <%
         String error = request.getParameter("error");
@@ -27,7 +27,7 @@
     %>
     
     <form action="SearchSeniorServlet" method="get">
-        <label for="searchField">Search by Name:</label>
+        <label for="searchField">Search senior by Name:</label>
         <input type="text" name="query" id="searchField" required>
         <button type="submit">Search</button>
     </form>

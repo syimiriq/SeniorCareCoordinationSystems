@@ -91,7 +91,6 @@ public class Seniors implements java.io.Serializable {
         }
     }
 
-    // Retrieve all seniors
     public static List<Seniors> getAllSeniors() {
         List<Seniors> seniorsList = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
