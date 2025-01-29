@@ -91,7 +91,7 @@
 
         <a href="caretakers.jsp" class="button">Manage Caretakers</a> 
         <a href="activities.jsp" class="button">Manage Activities</a> 
-        <a href="schedules.jsp" class="button">Manage Schedules</a> 
+        <a href="schedule.jsp" class="button">Manage Schedules</a> 
         
     </div>
 

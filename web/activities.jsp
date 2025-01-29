@@ -19,25 +19,43 @@
         
         <title>Manage Activities</title>
        <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-    </style>
+           body {
+               font-family: Arial, sans-serif;
+               background-color: #fff;  /* White background */
+               color: #333;  /* Dark text for contrast */
+            }
+           table {
+               width: 100%;
+               border-collapse: collapse;
+           }
+           table, th, td {
+               border: 1px solid black;
+           }
+           th, td {
+               padding: 8px;
+               text-align: center;
+           }
+           .button {
+               padding: 10px 20px;
+               margin: 10px;
+               background-color: #333;  /* Black background */
+               color: #fff;  /* White text */
+               text-decoration: none;
+               border-radius: 5px;
+               font-weight: bold;
+               border: none;
+           }
+           .button:hover {
+               background-color: #555;  /* Dark gray when hovered */
+           }
+        </style>
     </head>
     <body>
         <button type="button" onclick="location.href='adminhome.jsp'">Back</button>
         <h1>Manage Activities</h1>
-        <button type="button" onclick="location.href='addActivities.jsp'">Add New Activities</button>
-        <button type="button" onclick="location.href='searchActivities.jsp'">Search Activities</button>
-        <br>
+        <button type="button" class="button" onclick="location.href='addActivities.jsp'">Add New Activities</button>
+        <button type="button" class="button" onclick="location.href='searchActivities.jsp'">Search Activities</button>
+        <br><br>
         <table>
         <tr>
             <th>Activities ID</th>

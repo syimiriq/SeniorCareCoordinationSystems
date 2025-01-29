@@ -36,8 +36,8 @@
     <body>
         <button type="button" onclick="location.href='adminhome.jsp'">Back</button>
         <h1>Manage Schedules</h1>
-        <button type="button" onclick="location.href='addSchedules.jsp'">Add New Schedules</button>
-        <button type="button" onclick="location.href='searchSchedules.jsp'">Search Schedules</button>
+        <button type="button" onclick="location.href='addSchedule.jsp'">Add New Schedules</button>
+        <button type="button" onclick="location.href='searchSchedule.jsp'">Search Schedules</button>
         <br>
         <tr>
             <th>Activities ID</th>

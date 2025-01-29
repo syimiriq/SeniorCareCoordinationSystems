@@ -24,16 +24,16 @@ public class editScheduleServlet extends HttpServlet {
 
         try {
             // Retrieve input parameters from the request
-            int id = Integer.parseInt(request.getParameter("activityid"));
-            int id = Integer.parseInt(request.getParameter("seniorid"));
+            int activityid = Integer.parseInt(request.getParameter("activityid"));
+            int seniorid = Integer.parseInt(request.getParameter("seniorid"));
             String start_time = request.getParameter("start_name");
             String end_time = request.getParameter("end_time");
             String date = request.getParameter("date");
             boolean status = Boolean.parseBoolean(request.getParameter("status"));
-            int id = Integer.parseInt(request.getParameter("caretakerid"));
+            int caretakerid = Integer.parseInt(request.getParameter("caretakerid"));
 
             // Load the caretaker data using the ID
-            Schedules schedule = Schedules.getScheduleById(activityid);
+            Schedules schedule = Schedules.getScheduleById(activityid, seniorid, caretakerid);
             if (schedule == null) {
                 response.getWriter().println("Error: activity not found.");
                 return;
