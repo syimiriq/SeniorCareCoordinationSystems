@@ -39,19 +39,19 @@
         <button type="button" onclick="location.href='activities.jsp'">Back</button>
        <h1>Edit Activity</h1>
     <form action="editActivityServlet" method="post">
-        <input type="hidden" name="id" value="<%= activity.getid() %>">
+        <input type="hidden" name="id" value="<%= activity.getId() %>">
 
         <label for="name">Name:</label>
-        <input type="text" name="name" value="<%= activity.getname() %>" required><br>
+        <input type="text" name="name" value="<%= activity.getName() %>" required><br>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" value="<%= activity.gettype() %>" required><br>
+        <label for="type">Type:</label>
+        <input type="text" name="type" value="<%= activity.getType() %>" required><br>
 
-        <label for="username">Username:</label>
-        <input type="text" name="username" value="<%= activity.getdescription() %>" required><br>
+        <label for="description">Description:</label>
+        <input type="text" name="description" value="<%= activity.getDescription() %>" required><br>
 
-        <label for="phone">Phone:</label>
-        <input type="text" name="phone" value="<%= activity.getlocation() %>" required><br>
+        <label for="location">Location:</label>
+        <input type="text" name="location" value="<%= activity.getLocation() %>" required><br>
 
         <button type="submit">Save Changes</button>
     </form>

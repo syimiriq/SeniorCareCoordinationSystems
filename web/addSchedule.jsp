@@ -26,8 +26,6 @@
             <input type="text" required><br>
             <label for="date">Date:</label>
             <input type="text" required><br>
-            <label for="status">Status :</label>
-            <input type="text" required><br>
             <label >Caretaker ID:</label>
             <input type="text" required><br>
             <button type="submit">Add</button>

@@ -23,25 +23,31 @@ public class addScheduleServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
            
 
+        int activityid = Integer.parseInt(request.getParameter("activityid"));
+        int seniorid = Integer.parseInt(request.getParameter("seniorid"));
         String start = request.getParameter("start");
         String end = request.getParameter("end");
         String date = request.getParameter("date");
-        String status = request.getParameter("status");
+        boolean status = true;
+        int caretakerid = Integer.parseInt(request.getParameter("caretakerid"));
 
         
         // Validate inputs
-        /*if (start == null || end == null || status == null){
+        if (activityid == null || seniorid == null || start == null || end == null || date == null || status == null || carertakerid == null){
             response.getWriter().println("All fields are required!");
             return;
-        }*/
+        }
 
         try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination","scc","scc")) {
-            String query = "INSERT INTO ACTIVITIES (START_TIME, END_TIME, DATE, STATUS) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO SCHEDULES (START_TIME, END_TIME, DATE, STATUS) VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, start);
-            stmt.setString(2, end);
-            stmt.setString(3, date);
-            stmt.setString(3, status);
+            stmt.setInt(1, activityid);
+            stmt.setInt(2, seniorid);
+            stmt.setString(3, start);
+            stmt.setString(4, end);
+            stmt.setString(5, date);
+            stmt.setBoolean(6,status);
+            stmt.setInt(7, caretakerid);
             stmt.executeUpdate();
             
             response.sendRedirect("schedule.jsp");

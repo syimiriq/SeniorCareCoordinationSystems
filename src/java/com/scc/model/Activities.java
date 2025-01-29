@@ -21,15 +21,15 @@ public class Activities implements java.io.Serializable{
         this.location = location;
     }
     //Getter and Setter
-    public int getid(){return id;}
-    public String getname(){return name;}
-    public void setname(String name){this.name = name;}
-    public String gettype(){return type;}
-    public void settype(String type){this.type = type;}
-    public String getdescription(){return description;}
-    public void setdescription(String description){this.description = description;}
-    public String getlocation(){return location;}
-    public void setlocation(String location){this.location = location;}
+    public int getId(){return id;}
+    public String getName(){return name;}
+    public void setName(String name){this.name = name;}
+    public String getType(){return type;}
+    public void setType(String type){this.type = type;}
+    public String getDescription(){return description;}
+    public void setDescription(String description){this.description = description;}
+    public String getLocation(){return location;}
+    public void setLocation(String location){this.location = location;}
     
     //method to retrieve a activity by ID
     public static Activities getActivityById(int id) {
@@ -61,7 +61,7 @@ public class Activities implements java.io.Serializable{
             stmt.setString(2, type);
             stmt.setString(3, description);
             stmt.setString(4, location);
-            stmt.setInt(8, id);
+            stmt.setInt(5, id);
             int rowsUpdated = stmt.executeUpdate();
             return rowsUpdated > 0;
         } catch (SQLException e) {
