@@ -4,6 +4,8 @@
     Author     : user
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="com.scc.model.Guardians"%>
 <%@page import="com.scc.model.Seniors"%>
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 
@@ -26,6 +28,19 @@
         out.println("<p style='color:red;'>No senior found for the provided ID.</p>");
         return;
     }
+
+    List<Guardians> guardiansList = Guardians.getAllGuardians();
+    
+    String assignedGuardianName = "None"; // Default if no guardian assigned
+    int assignedGuardianID = senior.getGuardianID(); // Get the assigned guardian ID
+
+    for (Guardians guardian : guardiansList) {
+        if (guardian.getGuardianID() == assignedGuardianID) {
+            assignedGuardianName = guardian.getName(); // Set guardian name if found
+            break;
+        }
+    }
+
 %>
 
 <!DOCTYPE html>
@@ -55,6 +70,16 @@
         <label for="dateofbirth">Date of Birth:</label>
         <input type="date" name="dateofbirth" id="dateofbirth" value="<%= senior.getDateOfBirth() %>" required><br>
 
+        <label for="guardian">Assign Guardian:</label>
+        <select name="guardianID" id="guardian">
+            <option value=""><%= assignedGuardianName %></option>             
+            <% for (Guardians guardian : guardiansList) { %>
+                <option value="<%= guardian.getGuardianID() %>" 
+                    <%= (senior.getGuardianID() == guardian.getGuardianID()) ? "selected" : "" %>>
+                    <%= guardian.getName() %>
+                </option>
+            <% } %>
+        </select><br>
         <button type="submit">Save Changes</button>
     </form>
 </body>

@@ -94,23 +94,27 @@ public class Guardians implements java.io.Serializable {
     }
 
     // Update guardian
-    public boolean update() {
-        try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
-             PreparedStatement stmt = conn.prepareStatement(
-                     "UPDATE GUARDIANS SET NAME = ?, PHONE = ?, GENDER = ?, ADDRESS = ?, DATEOFBIRTH = ? WHERE ID = ?")) {
-            stmt.setString(1, name);
-            stmt.setString(2, phone);
-            stmt.setString(3, gender);
-            stmt.setString(4, address);
-            stmt.setString(5, dateOfBirth);
-            stmt.setInt(6, ID); // Fix for missing binding of ID
-            int rowsUpdated = stmt.executeUpdate();
-            return rowsUpdated > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+public boolean update() {
+    try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
+         PreparedStatement stmt = conn.prepareStatement(
+                 "UPDATE GUARDIANS SET NAME = ?, PHONE = ?, GENDER = ?, ADDRESS = ?, DATEOFBIRTH = ? WHERE ID = ?")) {
+
+        stmt.setString(1, name);
+        stmt.setString(2, phone);
+        stmt.setString(3, gender);
+        stmt.setString(4, address);
+        stmt.setString(5, dateOfBirth);
+        stmt.setInt(6, ID);
+
+        int rowsUpdated = stmt.executeUpdate();
+        System.out.println("Rows updated: " + rowsUpdated); // Debugging print
+        return rowsUpdated > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
     }
+}
+
 
     // Retrieve all guardians
     public static List<Guardians> getAllGuardians() {

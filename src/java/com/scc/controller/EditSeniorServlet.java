@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class EditSeniorServlet extends HttpServlet {
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
 
         // Check session for authentication
@@ -27,6 +29,7 @@ public class EditSeniorServlet extends HttpServlet {
             String gender = request.getParameter("gender");
             String dateOfBirth = request.getParameter("dateofbirth");
             int guardianID = Integer.parseInt(request.getParameter("guardianID"));
+            
 
             // Load the senior data using the ID
             Seniors senior = Seniors.getSeniorById(id);
@@ -54,6 +57,6 @@ public class EditSeniorServlet extends HttpServlet {
         }
 
         // Redirect to seniors management page
-        response.sendRedirect("seniors.jsp");
+        response.sendRedirect("senior.jsp");
     }
 }

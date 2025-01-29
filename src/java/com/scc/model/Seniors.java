@@ -10,6 +10,7 @@ public class Seniors implements java.io.Serializable {
     private String name;
     private String gender;
     private String dateOfBirth;
+    private int guardianID;
 
     // Constructor
     public Seniors(int ID, String name, String gender, String dateOfBirth) {
@@ -52,6 +53,9 @@ public class Seniors implements java.io.Serializable {
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+    
+    public int getGuardianID() { return guardianID; }
+    public void setGuardianID(int guardianID) { this.guardianID = guardianID; } 
 
     // Retrieve a senior by ID
     public static Seniors getSeniorById(int id) {
@@ -77,19 +81,22 @@ public class Seniors implements java.io.Serializable {
 
     // Update senior
     public boolean update() {
-        try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
-             PreparedStatement stmt = conn.prepareStatement("UPDATE SENIORS SET NAME = ?, GENDER = ?, DATEOFBIRTH = ? WHERE ID = ?")) {
-            stmt.setString(1, name);
-            stmt.setString(2, gender);
-            stmt.setString(3, dateOfBirth);
-            stmt.setInt(4, ID); // Fix: bind ID
-            int rowsUpdated = stmt.executeUpdate();
-            return rowsUpdated > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+    try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/SeniorCareCoordination", "scc", "scc");
+         PreparedStatement stmt = conn.prepareStatement("UPDATE SENIORS SET NAME = ?, GENDER = ?, DATEOFBIRTH = ?, GUARDIANID = ? WHERE ID = ?")) {
+        
+        stmt.setString(1, name);
+        stmt.setString(2, gender);
+        stmt.setString(3, dateOfBirth);
+        stmt.setInt(4, guardianID); // Assign guardian
+        stmt.setInt(5, ID);
+
+        int rowsUpdated = stmt.executeUpdate();
+        return rowsUpdated > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
     }
+}
 
     public static List<Seniors> getAllSeniors() {
         List<Seniors> seniorsList = new ArrayList<>();

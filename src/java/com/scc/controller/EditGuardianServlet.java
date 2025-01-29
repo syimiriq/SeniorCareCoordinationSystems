@@ -21,12 +21,12 @@ public class EditGuardianServlet extends HttpServlet {
 
         try {
             // Retrieve input parameters from the request
-            int ID = Integer.parseInt(request.getParameter("id")); // Ensure it matches the form field name
+            int ID = Integer.parseInt(request.getParameter("ID")); // Ensure it matches the form field name
             String name = request.getParameter("name");
             String phone = request.getParameter("phone");
             String gender = request.getParameter("gender");
             String address = request.getParameter("address");
-            String dateOfBirth = request.getParameter("dateofbirth"); // Ensure it matches the form field name
+            String dateOfBirth = request.getParameter("dateOfBirth"); // Ensure it matches the form field name
 
             // Load the guardian data using the ID
             Guardians guardian = Guardians.getGuardianById(ID);
