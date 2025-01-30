@@ -17,10 +17,10 @@
             height: 100vh;
         }
         .container {
-            max-width: 400px;
+            max-width: 600px;
             background: #fff;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 60px;
+            border-radius: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
