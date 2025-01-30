@@ -30,7 +30,7 @@ public class EditCaretakerServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
             String email = request.getParameter("email");
-            String phone = request.getParameter("phone"); // FIXED: Changed from int to String
+            int phone = Integer.parseInt(request.getParameter("phone")); // FIXED: Changed from int to String
             String role = request.getParameter("role");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
