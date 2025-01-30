@@ -7,8 +7,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f4f4f4;
             color: #333;
         }
@@ -30,10 +28,7 @@
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
-            font-weight: bold;
             border: none;
-            display: inline-block;
-            text-align: center;
             cursor: pointer;
         }
         .button:hover {
@@ -43,15 +38,18 @@
             margin-bottom: 15px;
         }
         .form-group label {
-            display: block;
             font-weight: bold;
-            margin-bottom: 5px;
         }
         .form-group input {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -61,6 +59,12 @@
             <button class="button" type="button" onclick="window.location.href='caretakers.jsp';">Back</button>
             <h1>Add New Caretaker</h1>
         </div>
+
+        <% String errorMessage = (String) request.getAttribute("errorMessage");
+           if (errorMessage != null) { %>
+            <p class="error"><%= errorMessage %></p>
+        <% } %>
+
         <form action="AddCaretakerServlet" method="post">
             <div class="form-group">
                 <label for="name">Name:</label>

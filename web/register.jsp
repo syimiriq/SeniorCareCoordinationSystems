@@ -3,7 +3,6 @@
     Created on : Dec 11, 2024, 12:03:36 PM
     Author     : Syamir
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +11,11 @@
     <title>Register</title>
 </head>
 <body>
+
+    <% String errorMessage = (String) request.getAttribute("errorMessage");
+       if (errorMessage != null) { %>
+        <p style="color: red;"><%= errorMessage %></p>
+    <% } %>
 
     <form action="RegistrationServlet" method="post">
         <label for="name">Name:</label>
