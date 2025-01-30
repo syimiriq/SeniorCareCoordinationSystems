@@ -3,15 +3,16 @@
     Created on : Jan 12, 2025, 1:47:24 AM
     Author     : NITRO
 --%>
+<%@page import="com.scc.model.Caretakers"%>
 <%@page import="java.util.List"%>
 <%@page import="com.scc.model.Activities"%>
 <%
     
-    /*if (session == null || session.getAttribute("Admin") == null) {
+    if (session == null || session.getAttribute("Caretaker") == null) {
         response.sendRedirect("login.jsp");
         return;
-    }*/
-
+    }
+    Caretakers caretaker = (Caretakers)session.getAttribute("Caretaker");
     // Fetch the list of activities
     List<Activities> activitiesList = Activities.getAllActivities();
 %>
@@ -77,7 +78,7 @@
         <td><%= activity.getLocation() %></td>
         <td>
                 <a href="editActivities.jsp?id=<%= activity.getId() %>">Edit</a>
-                 <a href="deleteActivityServlet?id=<%= activity.getId() %>" onclick="return confirm('Are you sure you want to delete this caretaker?');">Delete</a>
+                 <a href="deleteActivityServlet?id=<%= activity.getId() %>" onclick="return confirm('Are you sure you want to delete this activity?');">Delete</a>
             </td>
         </tr>
         <%

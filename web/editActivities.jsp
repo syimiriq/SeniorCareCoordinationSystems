@@ -4,18 +4,19 @@
     Author     : NITRO
 --%>
 
+<%@page import="com.scc.model.Caretakers"%>
 <%@page import="com.scc.model.Activities"%>
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 
 <%
-    if (session == null || session.getAttribute("Admin") == null) {
+    if (session == null || session.getAttribute("Caretaker") == null) {
         response.sendRedirect("login.jsp");
         return;
     }
-
+    Caretakers caretaker = (Caretakers)session.getAttribute("Caretaker");
     String activityIdParam = request.getParameter("id");
     if (activityIdParam == null) {
-        out.println("<p style='color:red;'>Invalid caretaker ID.</p>");
+        out.println("<p style='color:red;'>Invalid activity ID.</p>");
         return;
     }
 

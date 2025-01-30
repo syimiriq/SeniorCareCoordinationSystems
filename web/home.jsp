@@ -38,8 +38,7 @@
     
 
         <form action="LogoutServlet" method="get">
-            <br>
-        <button type="submit">Logout</button>
-    </form>
+            <button type="submit" class="button">Logout</button>
+        </form>
 </body>
 </html>

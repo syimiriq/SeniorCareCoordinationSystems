@@ -22,7 +22,7 @@ public class editActivityServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession(false);
-        if(session == null || session.getAttribute("Admin")== null) {
+        if(session == null || session.getAttribute("Caretaker")== null) {
             response.sendRedirect("login.jsp");
             return;
         }

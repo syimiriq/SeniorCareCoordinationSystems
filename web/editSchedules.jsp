@@ -4,27 +4,26 @@
     Author     : NITRO
 --%>
 
+<%@page import="com.scc.model.Caretakers"%>
 <%@page import="com.scc.model.Schedules"%>
 <%@page import="javax.servlet.http.HttpServletRequest"%>
 
 <%
-    if (session == null || session.getAttribute("Admin") == null) {
+    if (session == null || session.getAttribute("Caretaker") == null) {
         response.sendRedirect("login.jsp");
         return;
     }
-
-    String activityIdParam = request.getParameter("activityid");
+    Caretakers caretaker = (Caretakers)session.getAttribute("Caretaker");
     String seniorIdParam = request.getParameter("seniorid");
-    String caretakerIdParam = request.getParameter("caretakerid");
-    if (activityIdParam == null || seniorIdParam == null || caretakerIdParam == null) {
-        out.println("<p style='color:red;'>Invalid activity ID.</p>");
+    if (seniorIdParam == null) {
+        out.println("<p style='color:red;'>Invalid senior ID.</p>");
         return;
     }
 
     
-    int activityid = Integer.parseInt(activityIdParam);
+
     int seniorid = Integer.parseInt(seniorIdParam);
-    int caretakerid = Integer.parseInt(caretakerIdParam);
+
     Schedules schedule = Schedules.getScheduleById(activityid, seniorid, caretakerid);
     
 
@@ -33,6 +32,7 @@
         out.println("<p style='color:red;'>No schedule found for the provided ID.</p>");
         return;
     }
+        List<Seniors> seniorList = Seniors.getAllSeniors();
 %>
 <!DOCTYPE html>
 <html>

@@ -1,10 +1,23 @@
-<%-- 
-    Document   : addSchedule
-    Created on : Jan 12, 2025, 1:59:49 AM
-    Author     : NITRO
---%>
-
+<%@page import="java.util.List"%>
+<%@page import="com.scc.model.Activities"%>
+<%@page import="com.scc.model.Caretakers"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    if (session == null || session.getAttribute("Caretaker") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+    Caretakers caretaker = (Caretakers)session.getAttribute("Caretaker");
+    String seniorIdParam = request.getParameter("id");
+    if (seniorIdParam == null) {
+        out.println("<p style='color:red;'>Invalid senior ID.</p>");
+        return;
+    }
+    int seniorid = Integer.parseInt(seniorIdParam);
+    
+    List<Activities> activityList = Activities.getAllActivities();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,41 +71,40 @@
             background-color: #45a049;
         }
         </style>
+
     </head>
-   <body>
-        <button class="edit-btn" type="button" onclick="location.href='schedule.jsp'">Back</button>
+    <body onload="setTimestamp()">
+        <button class="edit-btn" type="button" onclick="location.href='scheduleSenior.jsp?id=<%=seniorid%>'">Back</button>
         
         <div class="container">
         <div class="header">
         <h1>Create New Schedule</h1>
         </div>
-        <form action ="addScheduleServlet" method ="post" >
+        <form action="addScheduleServlet" method="post">
+            <input type="hidden" name="seniorID" value="<%=seniorid%>" required><br>
+
             <div class="info-item">
-            <label >Senior ID:</label>
-            <input type="text" required><br>
+                <label>Activity ID:</label>
+                <select name='activityID'>
+                    <% for (Activities activity : activityList) { %>
+                    <option value='<%=activity.getId()%>'><%=activity.getName()%></option>
+                    <% } %>
+                </select>
             </div>
+
             <div class="info-item">
-            <label >Activity ID:</label>
-            <input type="text" required><br>
+                <label for="start">Start Time:</label>
+                <input type="time" name="start" required><br>
             </div>
+
             <div class="info-item">
-            <label for="start">Start Time:</label>
-            <input type="text" required><br>
+                <label for="end">End Time:</label>
+                <input type="time" name="end" required><br>
             </div>
-            <div class="info-item">
-            <label for="end">End Time:</label>
-            <input type="text" required><br>
-            </div>
-            <div class="info-item">
-            <label for="date">Date:</label>
-            <input type="text" required><br>
-            </div>
-            <div class="info-item">
-            <label >Caretaker ID:</label>
-            <input type="text" required><br>
-            </div>
+
+            <input type="hidden" name="caretakerID" value="<%= caretaker.getID() %>" required><br>
+
             <button class="edit-btn" type="submit">Add</button>
-            
         </form>
         </div>
     </body>
