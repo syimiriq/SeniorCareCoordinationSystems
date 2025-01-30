@@ -16,25 +16,36 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manage Schedule</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                padding: 20px;
-                margin: 0;
-                background-color: #f4f4f9;
-            }
-            .button {
-                padding: 10px 20px;
-                margin: 10px;
-                text-decoration: none;
-                background-color: #4CAF50;
-                color: white;
-                border-radius: 5px;
-                font-size: 16px;
-            }
-            .button:hover {
-                background-color: #45a049;
-            }
+         <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+        }
+        .button:hover {
+            background-color: #555;
+        }
             .schedule-container {
                 display: flex;
                 flex-wrap: wrap;
@@ -97,11 +108,13 @@
                     max-width: 100%;
                     padding: 10px;
                 }
+                
             }
         </style>
     </head>
     <body>
         <button type="button" class="button" onclick="location.href='home.jsp'">Back</button>
+        <div class="container">
         <h1>Senior's Schedules</h1>
         
         <div class="schedule-container">
@@ -118,6 +131,7 @@
             <% 
                 }
             %>
+        </div>
         </div>
     </body>
 </html>

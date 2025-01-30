@@ -53,7 +53,7 @@
             margin-bottom: 5px;
         }
         .form-group input {
-            width: 100%;
+            width: 93%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;

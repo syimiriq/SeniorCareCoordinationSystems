@@ -62,11 +62,13 @@
         }
     </style>
 </head>
-<body>
+<body> 
+    <button class="button" onclick="window.location.href='caretakers.jsp';">Back</button>
     <div class="container">
+       
         <div class="header">
             <h1>Search Caretakers</h1>
-            <button class="button" onclick="window.location.href='caretakers.jsp';">Back</button>
+            
         </div>
         
         <% String error = request.getParameter("error"); %>

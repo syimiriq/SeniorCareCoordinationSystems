@@ -74,12 +74,12 @@
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="header">
-        <form>
+ <form>
             <button type="button" class="button" onclick="window.location.href='adminhome.jsp';">Back</button>
         </form>
+<div class="container">
+    <div class="header">
+       
         <h1>Manage Caretakers</h1>
         <a href="addCaretaker.jsp" class="button">Add New Caretaker</a>
         <a href="searchCaretaker.jsp" class="button">Search Caretaker</a>

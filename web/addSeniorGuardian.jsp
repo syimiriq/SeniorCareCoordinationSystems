@@ -17,74 +17,85 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
+            color: #333;
         }
         .container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 50px auto;
             background: #fff;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 20px;
         }
         .header {
             text-align: center;
             margin-bottom: 20px;
         }
-        .header h1 {
-            margin: 0;
-            font-size: 1.8em;
-            color: #333;
-        }
-        .info-section {
-            margin-bottom: 20px;
-        }
-        .info-section h3{
-            font-size: 1.4em;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
-        }
-        .info-item {
-            margin-bottom: 10px;
-        }
-        .info-item label {
-            font-weight: bold;
-            display: inline-block;
-            width: 120px;
-            color: #333;
-        }
-        .edit-btn {
-            display: inline-block;
-            margin-top: 10px;
+        .button {
             padding: 10px 20px;
-            font-size: 1em;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            border: none;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
             border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            display: inline-block;
+            text-align: center;
             cursor: pointer;
         }
-        .edit-btn:hover {
-            background-color: #45a049;
+        .button:hover {
+            background-color: #555;
+        }
+        .info-section{
+            
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 97%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         table {
-               width: 100%;
-               border-collapse: collapse;
-           }
-           table, th, td {
-               border: 1px solid black;
-           }
-           th, td {
-               padding: 8px;
-               text-align: center;
-           }
-        </style>
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        td a {
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        td a:hover {
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <form>
-  <button class="edit-btn" type="button" onclick="window.history.go(-1);">Back</button>
+  <button class="button" type="button" onclick="window.history.go(-1);">Back</button>
 </form>
     <div class="container">
         <div class="header">
@@ -95,13 +106,13 @@
         <form action="addSeniorGuardianServlet" method="post">
             <!-- Senior Details -->
                 <div class="info-section">
-                <h3>Senior Details</h3>
+                <h2>Senior Details</h2>
                 <br>
-                <div class="info-item">
+                <div class="form-group">
                     <label for="seniorName">Name</label>
                     <input type="text" id="seniorName" name="seniorName" required>
                 </div>
-                <div class="info-item">
+                <div class="form-group">
                     <label for="seniorGender">Gender</label>
                     <select id="seniorGender" name="seniorGender" required>
                         <option value="male">Male</option>
@@ -109,7 +120,7 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-                <div class="info-item">
+                <div class="form-group">
                     <label for="seniorDob">Date of Birth</label>
                     <input type="date" id="seniorDob" name="seniorDob" required>
                 </div>
@@ -118,13 +129,13 @@
 
             <!-- Guardian Details (Optional) -->
                 <div class="info-section">
-                <h3>Guardian Details (Optional)</h3>
+                <h2>Guardian Details (Optional)</h2>
                 <br>
-                <div class="info-item">
+                <div class="form-group">
                     <label for="guardianName">Name</label>
                     <input type="text" id="guardianName" name="guardianName">
                 </div>
-                <div class="info-item">
+                <div class="form-group">
                     <label for="guardianGender">Gender</label>
                     <select id="guardianGender" name="guardianGender">
                         <option value="">Select</option>
@@ -133,11 +144,11 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-                <div class="info-item">
+                <div class="form-group">
                     <label for="guardianContact">Contact</label>
                     <input type="text" id="guardianContact" name="guardianContact">
                 </div>
-                <div class="info-item">
+                <div class="form-group">
                     <label for="relationship">Relationship</label>
                     <select id="relationship" name="relationship">
                         <option value="">Select</option>
@@ -148,18 +159,18 @@
                         <option value="friend">Guardian</option>
                     </select>
                 </div>
-                <div class="info-item">
+                <div class="form-group">
                     <label for="guardianDob">Date of Birth</label>
                     <input type="date" id="guardianDob" name="guardianDob">
                 </div>
-                <div class="info-item">
+                <div class="form-group">
                     <label for="guardianAddress">Address</label>
                     <textarea id="guardianAddress" name="guardianAddress" rows="3"></textarea>
                 </div>
                 </div>
             
             <br>
-            <button class="edit-btn" type="submit">Submit</button>
+            <button class="button" type="submit">Submit</button>
         </form>
     </div>
 </body>
@@ -167,7 +178,7 @@
 <br>
         
         <!-- Table to Display Existing Records -->
-        <table >
+        <table>
         <tr>
             <th>Name</th>
             <th>Gender</th>

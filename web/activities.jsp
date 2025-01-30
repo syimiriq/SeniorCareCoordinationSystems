@@ -21,43 +21,70 @@
         
         <title>Manage Activities</title>
        <style>
-           body {
-               font-family: Arial, sans-serif;
-               background-color: #fff;  /* White background */
-               color: #333;  /* Dark text for contrast */
-            }
-           table {
-               width: 100%;
-               border-collapse: collapse;
-           }
-           table, th, td {
-               border: 1px solid black;
-           }
-           th, td {
-               padding: 8px;
-               text-align: center;
-           }
-           .button {
-               padding: 10px 20px;
-               margin: 10px;
-               background-color: #333;  /* Black background */
-               color: #fff;  /* White text */
-               text-decoration: none;
-               border-radius: 5px;
-               font-weight: bold;
-               border: none;
-           }
-           .button:hover {
-               background-color: #555;  /* Dark gray when hovered */
-           }
-        </style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        td a {
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        td a:hover {
+            color: #555;
+        }
+    </style>
     </head>
     <body>
-        <button type="button" onclick="location.href='home.jsp'">Back</button>
+        <button type="button" class="button" onclick="location.href='home.jsp'">Back</button>
+        <div class="container">
+        <div class="header">
         <h1>Manage Activities</h1>
         <button type="button" class="button" onclick="location.href='addActivities.jsp'">Add New Activities</button>
         <button type="button" class="button" onclick="location.href='searchActivities.jsp'">Search Activities</button>
-        <br><br>
+        </div>
         <table>
         <tr>
             <th>Activities ID</th>
@@ -65,6 +92,7 @@
             <th>Type</th>
             <th>Description</th>
             <th>Location</th>
+            <th>Actions</th>
         </tr>
         <% 
             for (Activities activity : activitiesList){
@@ -85,6 +113,6 @@
               }
         %>
         </table>
-        
+     </div>   
     </body>
 </html>

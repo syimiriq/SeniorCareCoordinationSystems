@@ -32,27 +32,71 @@
 <html>
 <head>
     <title>Manage Caretakers</title>
-    <style>
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+        }
+        .button:hover {
+            background-color: #555;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
         table, th, td {
-            border: 1px solid black;
+            border: 1px solid #ccc;
         }
         th, td {
-            padding: 8px;
+            padding: 12px;
             text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        td a {
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        td a:hover {
+            color: #555;
         }
     </style>
 </head>
 <body>
 
-<form>
-    <button type="button" onclick="window.location.href='medicalReport.jsp';">Back</button>
-</form> 
 
+<button class="button" type="button" onclick="window.location.href='medicalReport.jsp';">Back</button>
+<div class="container">
+<div class="header">
 <h1>Medical Report History:-</h1>
+</div>
 <p>SENIOR ID: <%= senior.getID() %> </p>
 <p>NAME: <%= senior.getName() %></p>
 <p>GENDER: <%= senior.getGender() %></p>
@@ -115,6 +159,6 @@
         }
     %>
 </table>
-
+</div>
 </body>
 </html>

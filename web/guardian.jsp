@@ -11,18 +11,75 @@
 <html>
 <head>
     <title>Manage Guardian</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        td a {
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        td a:hover {
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     
     <form>
-        <button type="button" onclick="window.location.href='home.jsp';">Back</button>
+        <button type="button" class="button" onclick="window.location.href='home.jsp';">Back</button>
     </form>
-    
+    <div class="container">
+    <div class="header">
     <h1>Manage Guardians</h1>
     
-    <a href="addGuardian.jsp">Add New Guardian</a>
-    <a href="searchGuardian.jsp">Search Guardian</a>
-    
+    <a href="addGuardian.jsp" class="button">Add New Guardian</a>
+    <a href="searchGuardian.jsp" class="button">Search Guardian</a>
+    </div>
     <%
         if (session == null || session.getAttribute("Caretaker") == null) {
             response.sendRedirect("login.jsp");
@@ -32,7 +89,7 @@
         }
     %>
     
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
@@ -107,5 +164,6 @@
 </tbody>
 
     </table>
+    </div>
 </body>
 </html>

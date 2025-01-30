@@ -37,87 +37,87 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
             background-color: #f4f4f4;
+            color: #333;
         }
         .container {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 400px;
+            margin: 50px auto;
             background: #fff;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 20px;
         }
         .header {
             text-align: center;
             margin-bottom: 20px;
         }
-        .header h1 {
-            margin: 0;
-            font-size: 1.8em;
-            color: #333;
-        }
-        .info-item {
-            margin-bottom: 10px;
-        }
-        .info-item label {
-            font-weight: bold;
-            display: inline-block;
-            width: 120px;
-            color: #333;
-        }
-        .edit-btn {
-            display: inline-block;
-            margin-top: 10px;
+        .button {
             padding: 10px 20px;
-            font-size: 1em;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            border: none;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
             border-radius: 5px;
+            border: none;
             cursor: pointer;
         }
-        .edit-btn:hover {
-            background-color: #45a049;
+        .button:hover {
+            background-color: #555;
         }
-        </style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 97%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <form>
-        <button class="edit-btn" type="button" onclick="window.location.href='medicalReport.jsp';">Back</button>
-    </form>
+        
+
     <div class="container">
+        <button class="button" type="button" onclick="window.location.href='medicalReport.jsp';">Back</button>
         <div class="header">
     <h1>Fill Medical Report</h1>
         </div>
     <form action="AddMedicalReportServlet" method="post">
         <p>Caretaker ID:<%= senior.getID() %>, Name: <%= senior.getName()%></p>
-        <div class="info-item">
+        <div class="form-group">
         <label for="height">Height(CM):</label>
         <input type="number" name="height" required><br>
         </div>
-        <div class="info-item">
+        <div class="form-group">
         <label for="weight">Weight(KG):</label>
         <input type="number" name="weight" required><br>
         </div>
-        <div class="info-item">
+        <div class="form-group">
         <label for="hr">Heart Rate(BPM):</label>
         <input type="number" name="hr" required><br>
         </div>
-        <div class="info-item">
+        <div class="form-group">
         <label for="bp">Blood Pressure(mm):</label>
         <input type="number" name="bp" required><br>
         </div>
-        <div class="info-item">
+        <div class="form-group">
         <label for="bt">Body Temperature(Celcius)</label>
         <input type="number" name="bt" required><br>
         <input type="hidden" name="seniorID" value="<%= senior.getID() %>">
         <input type="hidden" name="caretakerID" value="<%= caretaker.getID() %>">
         </div>
 
-        <button class="edit-btn" type="submit">Add</button>
-        <button class="edit-btn" type="reset">Reset</button>
+        <button class="button" type="submit">Add</button>
+        <button class="button" type="reset">Reset</button>
     </form>
     </div>
 </body>

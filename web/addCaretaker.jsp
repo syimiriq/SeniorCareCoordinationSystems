@@ -11,7 +11,7 @@
             color: #333;
         }
         .container {
-            max-width: 600px;
+            max-width: 400px;
             margin: 50px auto;
             background: #fff;
             padding: 20px;
@@ -41,7 +41,7 @@
             font-weight: bold;
         }
         .form-group input {
-            width: 100%;
+            width: 97%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -55,8 +55,9 @@
 </head>
 <body>
     <div class="container">
+        <button class="button" type="button" onclick="window.location.href='caretakers.jsp';">Back</button>
         <div class="header">
-            <button class="button" type="button" onclick="window.location.href='caretakers.jsp';">Back</button>
+            
             <h1>Add New Caretaker</h1>
         </div>
 

@@ -11,23 +11,63 @@
 <html>
 <head>
     <title>Search Activities</title>
-</head>
-<body>
-    <button type="button" onclick="location.href='activities.jsp'">Back</button>
-    <h1>Search Activities</h1>
-     <style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        table, th, td {
-            border: 1px solid black;
-        }
         th, td {
-            padding: 8px;
+            padding: 10px;
+            border: 1px solid #ccc;
             text-align: left;
         }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
     </style>
+</head>
+<body>
+    <button type="button" class="button" onclick="location.href='activities.jsp'">Back</button>
+    <div class="container">
+    <div class="header">
+    <h1>Search Activities</h1>
+    </div>
     <%
         String error = request.getParameter("error");
         if (error != null) {
@@ -38,9 +78,9 @@
     %>
     
     <form action="SearchActivitiesServlet" method="get">
-        <label for="searchField">Search by Name or Type:</label><br>
+        <label for="searchField">Search by Name or Type:</label>
         <input type="text" name="query" id="searchField" required>
-        <button type="submit">Search</button>
+        <button class="button" type="submit">Search</button>
     </form>
 
     <%
@@ -72,5 +112,6 @@
     <% } else if (searchResults != null) { %>
     <p>No results found.</p>
     <% } %>
+    </div>
 </body>
 </html>
