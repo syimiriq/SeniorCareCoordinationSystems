@@ -70,8 +70,14 @@
             font-weight: bold;
             margin-bottom: 5px;
         }
-        .form-group input, .form-group select {
-            width: 100%;
+        .form-group input{
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group select {
+            width: 93%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
